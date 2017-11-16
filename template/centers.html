@@ -36,7 +36,7 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                           <a class="dropdown-item" href="#">Profile</a>
                           <a class="dropdown-item" href="#">Setting</a>
-                          <a class="dropdown-item" href="#">Logout</a>
+                          <a class="dropdown-item" href="index.html">Logout</a>
                         </div>
                       </div>
                       |
@@ -108,13 +108,24 @@
     </section>
     <footer>
         <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="#">&copy Sulenchy 2017</a>
-    
-           
-          </nav>
+            <div class="col-md-4">
+                <a class="navbar-brand" href="#">&copy Sulenchy 2017</a>
+                
+            </div>
+            <div class="col-md-4 text-center">
+                <a class="navbar-brand" href="#">Social Media:</a>
+                <a class="#" href="#"><img src="../img/fb-logo.png" alt="facebook logo" class="img-fluid"></a> <img src="../img/twitter-logo.png" alt="facebook logo" class="img-fluid"> <img src="../img/google-plus-logo.png" alt="facebook logo" class="img-fluid">
+            </div>
+            <div class="col-md-4 text-center">
+                <form class="form-inline">
+                    
+                    <div class="form-group mx-sm-6 navbar-brand">
+                      Subscibe: <input type="password" class="form-control" id="inputPassword2" placeholder="Enter your Email">
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                  </form>
+            </div>          
+        </nav>
     </footer>
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
