@@ -1,121 +1,410 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Font awesome cdn -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Welcome Andevents</title>
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  </head>
-  <body>
-    <header>
-      <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="index.html"><img src="../img/logo.png" alt="logo">All-Events</a>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Testimony</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Services</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">How To</a>
-                </li>
-
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-              <a class="nav-link btn btn-secondary" href="signin.html">Sign-in</a>
-          </form>
-        </div>
-      </nav>
-    </header>
-    <section class="row h-100" style="margin: 100px 0 50px 0">
-      <div class= "container">
-          <div class="bg-secondary">
-              <div class="container">
-                    <p class="display-1 text-responsive text-primary">Welcome to <strong>All-Events</strong></p>
-                    <h5 class="lead text-right"><em>Home of satisfaction...</em></h5>
-            </div>
-            </div>
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin:0 auto; width:80%;padding: 20px;">
-            <h3 class="text-danger"><em><strong>Discount available on:</strong></em></h3>
-              <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-              </ol>
-              <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                  <img class="d-block img-fluid" src="../img/center2.jpg" alt="First slide">
-                  <div class="carousel-caption d-none d-md-block">
-                      <h3>Center 1</h3>
-                      <p>Located at lekki phase 2, Lagos</p>
-                      <a href="#">Read more</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block img-fluid" src="../img/center2.jpg" alt="Second slide">
-                  <div class="carousel-caption d-none d-md-block">
-                      <h3>Center 2</h3>
-                      <p>Located at Magodo estate, Lagos</p>
-                      <a href="#">Read more</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block img-fluid" src="../img/center2.jpg" alt="Third slide">
-                  <div class="carousel-caption d-none d-md-block">
-                      <h3>Center 3</h3>
-                      <p>Located at Sharada Phase 2, kano</p>
-                      <a href="#">Read more</a>
-                    </div>
-                </div>
-              </div>
-              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-          </div>
-          
-      </div>
-    </section>
-    <footer>
-        <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-            <div class="col-md-4">
-                <a class="navbar-brand" href="#">&copy Sulenchy 2017</a>
+<body>
+    <!--navbar-->
+    <header  style="margin-bottom:100px">
+        <nav class="navbar navbar-expand-lg navbar-dark indigo fixed-top">
+        
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="#">Andevents</a>
+        
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
                 
-            </div>
-            <div class="col-md-4 text-center">
-                <a class="navbar-brand" href="#">Social Media:</a>
-                <a class="#" href="#"><img src="../img/fb-logo.png" alt="facebook logo" class="img-fluid"></a> <img src="../img/twitter-logo.png" alt="facebook logo" class="img-fluid"> <img src="../img/google-plus-logo.png" alt="facebook logo" class="img-fluid">
-            </div>
-            <div class="col-md-4 text-center">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#trending-centers">Trending Centers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#recent-events">Recent Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacts</a>
+                    </li>
+        
+                </ul>
+                <!-- Links -->
+        
+                <!-- Search form -->
                 <form class="form-inline">
-                    
-                    <div class="form-group mx-sm-6 navbar-brand">
-                      Subscibe: <input type="password" class="form-control" id="inputPassword2" placeholder="Enter your Email">
-                    </div>
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                  </form>
-            </div>          
+                    <a class="btn btn-blue text-white" href="signin.html">Sign-in</a>
+                </form>
+            </div>
+            <!-- Collapsible content -->
+        
         </nav>
-    </footer>
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  </body>
+        <!--/.Navbar-->
+
+    </header>
+    <!--navbar-->
+    
+    <!--content-->
+    <main class="container">
+        <!--About-->
+        <div class="jumbotron" id="about">
+                <h1 class="h1-responsive">Hello, welcome to Andevents</h1>
+                <p class="lead">Andevents is the best event manager you can find anywhere across Nigeria. We are located at nooks and crannies of the country. We offer the best price you can think of. We manage everything about your event…</p>
+                <hr class="my-2">
+                <p>With us all events are boom ! !! !!!.
+                </p>
+                <a class="btn btn-primary btn-lg" role="button">Read more</a>
+        </div>
+        <!--About-->
+        
+        <!--Trending centers-->
+        
+        <div class="carousel slide carousel-fade text-center" id="trending-centers" data-ride="carousel">
+                <h1 class="section-heading h1 pt-4 light-blue-text">Trending Centers</h1>
+                <!--Section description-->
+                <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam.</p>
+                <!--Indicators-->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-2" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-2" data-slide-to="2"></li>
+                </ol>
+                <!--/.Indicators-->
+                <!--Slides-->
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <div class="view hm-black-light">
+                            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide">
+                            <div class="mask"></div>
+                        </div>
+                        <div class="carousel-caption">
+                            <h3 class="h3-responsive">Light mask</h3>
+                            <p>First text</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <!--Mask color-->
+                        <div class="view hm-black-strong">
+                            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide">
+                            <div class="mask"></div>
+                        </div>
+                        <div class="carousel-caption">
+                            <h3 class="h3-responsive">Strong mask</h3>
+                            <p>Secondary text</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <!--Mask color-->
+                        <div class="view hm-black-slight">
+                            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg" alt="Third slide">
+                            <div class="mask"></div>
+                        </div>
+                        <div class="carousel-caption">
+                            <h3 class="h3-responsive">Slight mask</h3>
+                            <p>Third text</p>
+                        </div>
+                    </div>
+                </div>
+                <!--/.Slides-->
+                <!--Controls-->
+                <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+                <!--/.Controls-->
+            </div>
+        <!--Trending centers-->
+
+        <!--Most Recent events-->
+        <br>
+        <div id="recent-events" class="carousel slide carousel-fade text-center" data-ride="carousel">
+                <h1 class="section-heading h1 pt-4 light-blue-text">Most Recent Events</h1>
+                <!--Section description-->
+                <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam.</p>
+        <ol class="carousel-indicators">
+            <li data-target="#video-carousel-example" data-slide-to="0" class="active"></li>
+            <li data-target="#video-carousel-example" data-slide-to="1"></li>
+            <li data-target="#video-carousel-example" data-slide-to="2"></li>
+        </ol>
+        
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <video class="video-fluid" autoplay loop>
+                    <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4" />
+                </video>
+            </div>
+            <div class="carousel-item">
+                <video class="video-fluid" autoplay loop>
+                    <source src="https://mdbootstrap.com/img/video/forest.mp4" type="video/mp4" />
+                </video>
+            </div>
+            <div class="carousel-item">
+                <video class="video-fluid" autoplay loop>
+                    <source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+        
+        <a class="carousel-control-prev" href="#video-carousel-example" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#video-carousel-example" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        
+    </div>
+        <!--Trending events-->
+        
+        <!---Testimony-->
+
+        <!--Section: Testimonials v.1-->
+<section class="section pb-3 text-center">
+        <div id="testimonials">
+            <!--Section heading-->
+            <h1 class="section-heading h1 pt-4 light-blue-text">Testimonials</h1>
+            <!--Section description-->
+            <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam.</p>
+        
+            <div class="row">
+        
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-12 mb-r">
+        
+                    <!--Card-->
+                    <div class="card testimonial-card">
+        
+                        <!--Background color-->
+                        <div class="card-up blue lighten-2">
+                        </div>
+        
+                        <!--Avatar-->
+                        <div class="avatar"><img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" class="rounded-circle img-responsive">
+                        </div>
+        
+                        <div class="card-body">
+                            <!--Name-->
+                            <h4 class="card-title mt-1">Anna Aston</h4>
+                            <hr>
+                            <!--Quotation-->
+                            <p><i class="fa fa-quote-left"></i> Neque cupiditate assumenda in maiores repudiandae mollitia architecto.</p>
+                        </div>
+        
+                    </div>
+                    <!--Card-->
+        
+                </div>
+                <!--Grid column-->
+        
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-12 mb-r">
+        
+                    <!--Card-->
+                    <div class="card testimonial-card">
+        
+                        <!--Background color-->
+                        <div class="card-up blue lighten-2">
+                        </div>
+        
+                        <!--Avatar-->
+                        <div class="avatar"><img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" class="rounded-circle img-responsive">
+                        </div>
+        
+                        <div class="card-body">
+                            <!--Name-->
+                            <h4 class="card-title mt-1">Anna Aston</h4>
+                            <hr>
+                            <!--Quotation-->
+                            <p><i class="fa fa-quote-left"></i> Neque cupiditate assumenda in maiores repudiandae mollitia architecto.</p>
+                        </div>
+        
+                    </div>
+                    <!--Card-->
+        
+                </div>
+                <!--Grid column-->
+        
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-12 mb-r">
+        
+                    <!--Card-->
+                    <div class="card testimonial-card">
+        
+                        <!--Background color-->
+                        <div class="card-up deep-purple lighten-2"></div>
+        
+                        <!--Avatar-->
+                        <div class="avatar"><img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" class="rounded-circle img-responsive">
+                        </div>
+        
+                        <div class="card-body">
+                            <!--Name-->
+                            <h4 class="card-title mt-1">Maria Kate</h4>
+                            <hr>
+                            <!--Quotation-->
+                            <p><i class="fa fa-quote-left"></i> Delectus impedit saepe officiis ab aliquam repellat, rem totam unde ducimus.</p>
+                        </div>
+        
+                    </div>
+                    <!--Card-->
+        
+                </div>
+                <!--Grid column-->
+        
+            </div>
+        
+        </section>
+        <!--Section: Testimonials v.1-->
+    </div>
+
+        <!---Testimony-->
+    </main>
+
+    <!--content-->
+
+    <!--footer-->
+
+    <footer class="page-footer indigo center-on-small-only pt-0">
+            
+                <!--Footer Links-->
+                <div class="container">
+            
+                    
+                    <div class="row pt-5 mb-3 text-center d-flex justify-content-center">
+            
+                        
+                        <div class="col-md-2 mb-3">
+                            <h6 class="title font-bold"><a href="#about">About us</a></h6>
+                        </div>
+                        
+                        <div class="col-md-2 mb-3">
+                            <h6 class="title font-bold"><a href="#trending-centers">Trending Centers</a></h6>
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                            <h6 class="title font-bold"><a href="#recent-events">Recent Events</a></h6>
+                        </div>
+                        
+                        <div class="col-md-2 mb-3">
+                            <h6 class="title font-bold"><a href="#testimonials">Testimonials</a></h6>
+                        </div>
+            
+                        
+                        <div class="col-md-2 mb-3">
+                            <h6 class="title font-bold"><a href="#help">Help</a></h6>
+                        </div>
+                        
+            
+                        <!--Grid column-->
+                        <div class="col-md-2 mb-3">
+                            <h6 class="title font-bold"><a href="#contact">Contact</a></h6>
+                        </div>
+                        <!--Grid column-->
+            
+                    </div>
+                    <!--Grid row-->
+            
+                    <hr class="rgba-white-light" style="margin: 0 15%;">
+            
+                    <!--Grid row-->
+                    <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+            
+                        <!--Grid column-->
+                        <div class="col-md-8 col-12 mt-5">
+                            <p style="line-height: 1.7rem">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae
+                                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+                                aut fugit, sed quia consequuntur.</p>
+            
+                        </div>
+                        <!--Grid column-->
+            
+                    </div>
+                    <!--Grid row-->
+            
+                    <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+            
+                    <!--Grid row-->
+                    <div class="row pb-3">
+            
+                        <!--Grid column-->
+                        <div class="col-md-12">
+            
+                            <div class="footer-socials mb-5 flex-center">
+                                <!--Facebook-->
+                                <a class="icons-sm fb-ic"><i class="fa fa-facebook fa-lg white-text mr-md-4"> </i></a>
+                                <!--Twitter-->
+                                <a class="icons-sm tw-ic"><i class="fa fa-twitter fa-lg white-text mr-md-4"> </i></a>
+                                <!--Google +-->
+                                <a class="icons-sm gplus-ic"><i class="fa fa-google-plus fa-lg white-text mr-md-4"> </i></a>
+                                <!--Linkedin-->
+                                <a class="icons-sm li-ic"><i class="fa fa-linkedin fa-lg white-text mr-md-4"> </i></a>
+                                <!--Instagram-->
+                                <a class="icons-sm ins-ic"><i class="fa fa-instagram fa-lg white-text mr-md-4"> </i></a>
+                                <!--Pinterest-->
+                                <a class="icons-sm pin-ic"><i class="fa fa-pinterest fa-lg white-text"> </i></a>
+                            </div>
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+            
+                </div>
+                <!--/Footer Links-->
+            
+                <!--Copyright-->
+                <div class="footer-copyright">
+                    <div class="container-fluid">
+                        © 2017 Copyright: <a href="https://www.MDBootstrap.com"> AndelaNg.com </a>
+                    </div>
+                </div>
+                <!--/Copyright-->
+            
+            </footer>
+            
+
+    <!--footer-->
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+</body>
+
 </html>
