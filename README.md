@@ -18,14 +18,14 @@ The second part of this project is the Sever-side. The server-side is where the 
 
 # Prerequisites
 The things needed before one can run this app are:
-    * A broswer of your choice but preferably Google Chrome.
-    * Internet
+* A broswer of your choice but preferably Google Chrome.
+* Internet
 
 # Installing
 N/A
 
 # Running Test
-To run this app, one only need the URL below
+To run the template of the app, you only need the URL below: 
 https://sulenchy.github.io/Event-Manager/template/index.html
 
 # Break down into end to end tests
@@ -38,7 +38,12 @@ N/A
 N/A
 
 # Built With
-N/A
+* HTML/CSS
+* Javascript
+* Twitter Bootstrap / Font Awesome
+* Node.js
+* Express.js
+* Postgresql
 
 # Contributing
 N/A
