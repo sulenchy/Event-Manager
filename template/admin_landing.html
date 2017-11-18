@@ -1,153 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Font awesome cdn -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Welcome Andevents</title>
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  </head>
-  <body>
-    <header>
-      <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="admin_landing.html"><img src="../img/logo.png" alt="logo"></a>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="admin_landing.html">Home<span class="sr-only">(current)</span></a>
-              </li>
-              
-              <li class="nav-item">
-                  <a class="nav-link" href="my_events.html">Enquiry <sup class="text-danger">10</sup></a>
-              </li>
-
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-                <div class="dropdown show">
-                        <a class="dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <img src="../img/user-avatar.png" alt="user avatar">
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                          <a class="dropdown-item" href="#">Profile</a>
-                          <a class="dropdown-item" href="#">Setting</a>
-                          <a class="dropdown-item" href="index.html">Logout</a>
-                        </div>
-                      </div>
-                      |
-                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search Center">
-                        <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
-                      </div>
-          </form>
-        </div>
-      </nav>
-    </header>
-    <section class="row h-100" style="margin: 100px 0 50px 0">
-        <div class= "container">
-            <div class="row">
-                <h3>Admin</h3>
-                    <div class="col-md-12">
-                        <div class="col-md-12" style="margin:0 auto; width:80%;padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                          <div class="container">
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="card">
-                                  <div class="card-block">
-                                    <h3 class="card-title">Add New Center</h3>
-                                    <p class="card-text">Admin can add new Centers by Clicking add below</p>
-                                    <a href="add_center.html" class="btn btn-primary">Add</a>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="card">
-                                  <div class="card-block">
-                                    <h3 class="card-title">View Centers</h3>
-                                    <p class="card-text">You can view the available center by clicking view below.</p>
-                                    <a href="centers.html" class="btn btn-primary">View</a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="card">
-                                  <div class="card-block">
-                                    <h3 class="card-title">Edit Center</h3>
-                                    <p class="card-text">Log of clients' complain can be view by clicking view below .</p>
-                                    <a href="edit_center.html" class="btn btn-primary">View</a>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="card">
-                                  <div class="card-block">
-                                    <h3 class="card-title">Enquiry</h3>
-                                    <p class="card-text">Log of clients' enquiry can be view by clicking view below .</p>
-                                    <a href="#" class="btn btn-primary">View</a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="card">
-                                  <div class="card-block">
-                                    <h3 class="card-title">Notification</h3>
-                                    <p class="card-text">A client can be notified of an happeings in All Events.</p>
-                                    <a href="#" class="btn btn-primary">Send</a>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="card">
-                                  <div class="card-block">
-                                    <h3 class="card-title">Special title treatment</h3>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                      </div>
-                    </div>
-                    
-                  </div>    
-      </div>
-    </section>
-    <footer>
-        <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-            <div class="col-md-4">
-                <a class="navbar-brand" href="#">&copy Sulenchy 2017</a>
+<body>
+    <!--navbar-->
+    <header  style="margin-bottom:100px">
+        <nav class="navbar navbar-expand-lg navbar-dark indigo fixed-top">
+        
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="#">Andevents</a>
+        
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
                 
-            </div>
-            <div class="col-md-4 text-center">
-                <a class="navbar-brand" href="#">Social Media:</a>
-                <a class="#" href="#"><img src="../img/fb-logo.png" alt="facebook logo" class="img-fluid"></a> <img src="../img/twitter-logo.png" alt="facebook logo" class="img-fluid"> <img src="../img/google-plus-logo.png" alt="facebook logo" class="img-fluid">
-            </div>
-            <div class="col-md-4 text-center">
-                <form class="form-inline">
+                <ul class="navbar-nav mr-auto">
                     
-                    <div class="form-group mx-sm-6 navbar-brand">
-                      Subscibe: <input type="password" class="form-control" id="inputPassword2" placeholder="Enter your Email">
-                    </div>
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                  </form>
-            </div>          
+        
+                </ul>
+                <!-- Links -->
+        
+                <!-- Search form -->
+                <form class="form-inline">
+                    <a class="btn btn-blue text-white" href="index.html">Sign-out</a>
+                </form>
+            </div>
+            <!-- Collapsible content -->
+        
         </nav>
-    </footer>
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  </body>
+        <!--/.Navbar-->
+
+    </header>
+    <!--navbar-->
+    
+    <!--content-->
+    <main class="container">
+        <section class="section pb-3 text-center">
+            
+                <!--Section heading-->
+                <h1 class="section-heading h1 pt-4">Administrator Panel</h1>
+                <!--Section description-->
+                <p class="section-description">A number of administrative operations can be carried out by the admin. See them below.</p>
+            
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-12 mb-r">
+            
+                        <!--Card-->
+                        <div class="card testimonial-card">
+            
+                            <!--Background color-->
+                            <div class="card-up blue lighten-2">
+                            </div>
+            
+                            
+            
+                            <div class="card-body">
+                                <!--Name-->
+                                <h4 class="card-title mt-1">Add New Center</h4>
+                                <hr>
+                                <!--Quotation-->
+                                <p><i class="fa fa-quote-left"></i> Adding new event center is so easy. Click add button.</p>
+                                <a href="add_center.html" class="btn btn-primary">Add</a>
+                            </div>
+            
+                        </div>
+                        <!--Card-->
+            
+                    </div>
+                    <!--Grid column-->
+            
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-12 mb-r">
+            
+                        <!--Card-->
+                        <div class="card testimonial-card">
+            
+                            <!--Background color-->
+                            <div class="card-up blue lighten-2">
+                            </div>
+            
+                            
+            
+                            <div class="card-body">
+                                <!--Name-->
+                                <h4 class="card-title mt-1">Edit Center</h4>
+                                <hr>
+                                <!--Quotation-->
+                                <p><i class="fa fa-quote-left"></i> Added center and its info is editable. Click edit button.</p>
+                                <a href="add_center.html" class="btn btn-primary">Add</a>
+                            </div>
+            
+                        </div>
+                        <!--Card-->
+            
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-12 mb-r">
+            
+                        <!--Card-->
+                        <div class="card testimonial-card">
+            
+                            <!--Background color-->
+                            <div class="card-up blue lighten-2">
+                            </div>
+            
+                            
+            
+                            <div class="card-body">
+                                <!--Name-->
+                                <h4 class="card-title mt-1">Send Notification</h4>
+                                <hr>
+                                <!--Quotation-->
+                                <p><i class="fa fa-quote-left"></i> Do you need  to inform client about his/her event. Click go button.</p>
+                                <a href="add_center.html" class="btn btn-primary">Go</a>
+                            </div>
+            
+                        </div>
+                        <!--Card-->
+            
+                    </div>
+                    <!--Grid column-->
+            
+                    
+            
+                </div>
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-12 mb-r">
+            
+                        <!--Card-->
+                        <div class="card testimonial-card">
+            
+                            <!--Background color-->
+                            <div class="card-up blue lighten-2">
+                            </div>
+            
+                            
+            
+                            <div class="card-body">
+                                <!--Name-->
+                                <h4 class="card-title mt-1">Messages</h4>
+                                <hr>
+                                <!--Quotation-->
+                                <p><i class="fa fa-quote-left"></i> Admin can check message received. Click check button.</p>
+                                <a href="add_center.html" class="btn btn-primary">Check</a>
+                            </div>
+            
+                        </div>
+                        <!--Card-->
+            
+                    </div>
+                    <!--Grid column-->
+            
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-12 mb-r">
+            
+                        <!--Card-->
+                        <div class="card testimonial-card">
+            
+                            <!--Background color-->
+                            <div class="card-up blue lighten-2">
+                            </div>
+            
+                            
+            
+                            <div class="card-body">
+                                <!--Name-->
+                                <h4 class="card-title mt-1">Add New Center</h4>
+                                <hr>
+                                <!--Quotation-->
+                                <p><i class="fa fa-quote-left"></i> Adding new event center is so easy. Click add button.</p>
+                                <a href="add_center.html" class="btn btn-primary">Add</a>
+                            </div>
+            
+                        </div>
+                        <!--Card-->
+            
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-12 mb-r">
+            
+                        <!--Card-->
+                        <div class="card testimonial-card">
+            
+                            <!--Background color-->
+                            <div class="card-up blue lighten-2">
+                            </div>
+            
+                            
+            
+                            <div class="card-body">
+                                <!--Name-->
+                                <h4 class="card-title mt-1">Add New Center</h4>
+                                <hr>
+                                <!--Quotation-->
+                                <p><i class="fa fa-quote-left"></i> Adding new event center is so easy. Click add button.</p>
+                                <a href="add_center.html" class="btn btn-primary">Add</a>
+                            </div>
+            
+                        </div>
+                        <!--Card-->
+            
+                    </div>
+                    <!--Grid column-->
+            
+                    
+            
+                </div>
+            
+            </section>
+            <!--Section: Testimonials v.1-->
+            
+    </main>
+
+    <!--content-->
+
+    <!--footer-->
+
+    <footer class="page-footer indigo center-on-small-only pt-0">
+                    <hr class="rgba-white-light" style="margin: 0 15%;">
+            
+                    <!--Grid row-->
+                    <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+            
+                        <!--Grid column-->
+                        <div class="col-md-8 col-12 mt-5">
+                            <p style="line-height: 1.7rem">Andevents is the best event manager you can find anywhere across Nigeria. We are located at nooks and crannies of the country. We offer the best price you can think of. We manage everything about your event…
+                                
+                                </p>
+            
+                        </div>
+                        <!--Grid column-->
+            
+                    </div>
+                    <!--Grid row-->
+            
+                    <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+            
+                    <!--Grid row-->
+                    <div class="row pb-3">
+            
+                        <!--Grid column-->
+                        <div class="col-md-12">
+                            
+                            <div class="footer-socials mb-5 flex-center">
+                              
+                                <!--Facebook-->
+                                <a class="icons-sm fb-ic"><i class="fa fa-facebook fa-lg white-text mr-md-4"> </i></a>
+                                <!--Twitter-->
+                                <a class="icons-sm tw-ic"><i class="fa fa-twitter fa-lg white-text mr-md-4"> </i></a>
+                                <!--Google +-->
+                                <a class="icons-sm gplus-ic"><i class="fa fa-google-plus fa-lg white-text mr-md-4"> </i></a>
+                                <!--Linkedin-->
+                                <a class="icons-sm li-ic"><i class="fa fa-linkedin fa-lg white-text mr-md-4"> </i></a>
+                                <!--Instagram-->
+                                <a class="icons-sm ins-ic"><i class="fa fa-instagram fa-lg white-text mr-md-4"> </i></a>
+                                <!--Pinterest-->
+                                <a class="icons-sm pin-ic"><i class="fa fa-pinterest fa-lg white-text"> </i></a>
+                            </div>
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+            
+                </div>
+                <!--/Footer Links-->
+            
+                <!--Copyright-->
+                <div class="footer-copyright">
+                    <div class="container-fluid">
+                        © 2017 Copyright: <a href="https://www.MDBootstrap.com"> AndelaNg.com </a>
+                    </div>
+                </div>
+                <!--/Copyright-->
+            
+            </footer>
+            
+
+    <!--footer-->
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+</body>
+
 </html>
