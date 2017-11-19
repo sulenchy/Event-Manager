@@ -1,124 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Font awesome cdn -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Welcome Andevents</title>
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  </head>
-  <body>
-      <header>
-          <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="index.html"><img src="../img/logo.png" alt="logo">All-Events</a>
-    
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--navbar-->
+    <header  style="margin-bottom:100px">
+        <nav class="navbar navbar-expand-lg navbar-dark indigo fixed-top">
+        
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="#">Andevents</a>
+        
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        
+            <!-- Collapsible content -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">Testimony</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">Services</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">How To</a>
-                    </li>
-    
-              </ul>
-              <form class="form-inline my-2 my-lg-0">
-                  <a class="nav-link btn btn-secondary" href="signin.html">Sign-in</a>
-              </form>
-            </div>
-          </nav>
-        </header>
-    <section class="row h-100" style="margin: 100px 0 130px 0">
-        <div class= "container">
-              <div class="row">
-                        <div class="col-md-6" style="width:90%;padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                            <h3>Signin Here</h3>
-                            <div class="container">
-                              <form>
-                                <div class="form-group row">
-                                  <label for="inputEmail" class="col-sm-12 col-form-label">Email</label>
-                                  <div class="col-sm-12">
-                                    <input type="email" class="form-control form-control-success" id="inputEmail" placeholder="name@example.com">
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputPassword" class="col-sm-12 col-form-label">Password</label>
-                                  <div class="col-sm-12">
-                                    <input type="password" class="form-control form-control-success" id="inputPassword" placeholder="e.g. !victor52b">
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-12">
-                                        <a class="btn btn-primary" href="add_new_event.html" role="button">Signin</a>
-                                    </div>
-                                    <hr>
-                                </div>
-                                
-                                <div class="form-group row">
-                                  <label class="col-sm-8 col-form-label">Not a registered user? <a class="btn btn-primary" href="signup.html" role="button"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign-Up</a></label>
-                                  
-                                </div>
-                              </form>
-                            </div>
-                        </div>
-                          
-                        <div class="col-md-6" style="width:90%;padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                            <h3>Signin with</h3>
-                            <div class="container">
-                              <form>
-                                <div class="form-group row">
-                                    <a class="btn btn-primary w-25" href="#" role="button"><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a>
-                                </div>
-                                <div class="form-group row">
-                                    <a class="btn btn-primary w-25" href="#" role="button"><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a>
-                                </div>
-                                <div class="form-group row">
-                                    <a class="btn btn-danger w-25" href="#" role="button"><i class="fa fa-google-plus-square" aria-hidden="true"></i> Google</a>
-                                </div>
-                                </div>
-                                
-                                
-                              </form>
-                            </div>
-                        </div>
-                    </div>
-        </div>
-      </section>
-    <footer>
-        <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-            <div class="col-md-4">
-                <a class="navbar-brand" href="#">&copy Sulenchy 2017</a>
+        
                 
-            </div>
-            <div class="col-md-4 text-center">
-                <a class="navbar-brand" href="#">Social Media:</a>
-                <a class="#" href="#"><img src="../img/fb-logo.png" alt="facebook logo" class="img-fluid"></a> <img src="../img/twitter-logo.png" alt="facebook logo" class="img-fluid"> <img src="../img/google-plus-logo.png" alt="facebook logo" class="img-fluid">
-            </div>
-            <div class="col-md-4 text-center">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacts</a>
+                    </li>
+        
+                </ul>
+                <!-- Links -->
+        
+                <!-- Search form -->
                 <form class="form-inline">
-                    
-                    <div class="form-group mx-sm-6 navbar-brand">
-                      Subscibe: <input type="password" class="form-control" id="inputPassword2" placeholder="Enter your Email">
-                    </div>
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                  </form>
-            </div>          
+                    <a class="btn btn-blue text-white" href="signin.html">Sign-in</a>
+                    <a class="btn btn-blue text-white" href="signup.html">Sign-up</a>
+                </form>
+            </div>
+            <!-- Collapsible content -->
+        
         </nav>
-    </footer>
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  </body>
+        <!--/.Navbar-->
+
+    </header>
+    <!--navbar-->
+    
+    <!--content-->
+    <main class="container">
+      <div class="row">
+        <section class="form-elegant col-md-6 center-box">
+            
+                <!--Form without header-->
+                <div class="card">
+            
+                    <div class="card-body mx-4">
+            
+                        <!--Header-->
+                        <div class="text-center">
+                            <h3 class="dark-grey-text mb-5"><strong>Sign in</strong></h3>
+                        </div>
+                        
+            
+                        <!--Body-->
+                        <div class="md-form">
+                            <input type="text" id="Form-email1" class="form-control">
+                            <label for="Form-email1">Your email</label>
+                        </div>
+            
+                        <div class="md-form pb-3">
+                            <input type="password" id="Form-pass1" class="form-control">
+                            <label for="Form-pass1">Your password</label>
+                            <p class="font-small blue-text d-flex justify-content-end">Forgot <a href="#" class="blue-text ml-1"> Password?</a></p>
+                        </div>
+            
+                        <div class="text-center mb-3">
+                            <a class="btn btn-blue text-white btn-block btn-rounded z-depth-1a" href="add_new_event.html">Sign in</a>
+                        </div>
+                        <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Sign in with:</p>
+            
+                            <div class="row my-3 d-flex justify-content-center">
+                                <!--Facebook-->
+                                <button type="button" class="btn btn-indigo text-white btn-rounded mr-md-3 z-depth-1a"><i class="fa fa-facebook white-text text-center"></i></button>
+                                <!--Twitter-->
+                                <button type="button" class="btn btn-blue text-white btn-rounded mr-md-3 z-depth-1a"><i class="fa fa-twitter white-text"></i></button>
+                                <!--Google +-->
+                                <button type="button" class="btn btn-red text-white btn-rounded z-depth-1a"><i class="fa fa-google-plus white-text"></i></button>
+                            </div>
+            
+                    </div>
+            
+                    <!--Footer-->
+                    <div class="modal-footer mx-5 pt-3 mb-1">
+                        <p class="font-small grey-text d-flex justify-content-end">Not a member? <a href="signup.html" class="blue-text ml-1"> Sign Up</a></p>
+                    </div>
+            
+                </div>
+                <!--/Form without header-->
+            
+            </section>
+      </div>
+    </main>
+
+    <!--content-->
+
+    <!--footer-->
+
+    <footer class="page-footer indigo center-on-small-only pt-0">
+                    <hr class="rgba-white-light" style="margin: 0 15%;">
+            
+                    <!--Grid row-->
+                    <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+            
+                        <!--Grid column-->
+                        <div class="col-md-8 col-12 mt-5">
+                            <p style="line-height: 1.7rem">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae
+                                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+                                aut fugit, sed quia consequuntur.</p>
+            
+                        </div>
+                        <!--Grid column-->
+            
+                    </div>
+                    <!--Grid row-->
+            
+                    <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+            
+                    <!--Grid row-->
+                    <div class="row pb-3">
+            
+                        <!--Grid column-->
+                        <div class="col-md-12">
+            
+                            <div class="footer-socials mb-5 flex-center">
+                                <!--Facebook-->
+                                <a class="icons-sm fb-ic"><i class="fa fa-facebook fa-lg white-text mr-md-4"> </i></a>
+                                <!--Twitter-->
+                                <a class="icons-sm tw-ic"><i class="fa fa-twitter fa-lg white-text mr-md-4"> </i></a>
+                                <!--Google +-->
+                                <a class="icons-sm gplus-ic"><i class="fa fa-google-plus fa-lg white-text mr-md-4"> </i></a>
+                                <!--Linkedin-->
+                                <a class="icons-sm li-ic"><i class="fa fa-linkedin fa-lg white-text mr-md-4"> </i></a>
+                                <!--Instagram-->
+                                <a class="icons-sm ins-ic"><i class="fa fa-instagram fa-lg white-text mr-md-4"> </i></a>
+                                <!--Pinterest-->
+                                <a class="icons-sm pin-ic"><i class="fa fa-pinterest fa-lg white-text"> </i></a>
+                            </div>
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+            
+                </div>
+                <!--/Footer Links-->
+            
+                <!--Copyright-->
+                <div class="footer-copyright">
+                    <div class="container-fluid">
+                        © 2017 Copyright: <a href="https://www.MDBootstrap.com"> AndelaNg.com </a>
+                    </div>
+                </div>
+                <!--/Copyright-->
+            
+            </footer>
+            
+
+    <!--footer-->
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+</body>
+
 </html>
