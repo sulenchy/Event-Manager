@@ -30,7 +30,7 @@ export default (sequelize, Sequelize) => {
       validate: {
         notEmpty: true,
       },
-      title: {
+      userType: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,

@@ -16,7 +16,7 @@ export default (sequelize, Sequelize) => {
         notEmpty: true,
       },
     },
-    type: {
+    event_type: {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
