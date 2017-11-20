@@ -25,7 +25,7 @@ export default (sequelize, Sequelize) => {
       },
     },
     cost: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.DECIMAL,
       allowNull: false,
       validate: {
         isNumber: true,
