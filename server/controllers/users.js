@@ -17,13 +17,21 @@ export class UserSignup {
  * @memberof UserSignup
  */
   static signUp(req, res) {
-    const { username, email, userType } = req.body;
+    const {
+      username, email, userType, retypePassword,
+    } = req.body;
     let { password } = req.body;
     /* Checks password length */
     if (password.length < 8) {
       return res.status(400).send({
-        status: 'Fail',
+        status: 'Password error',
         message: 'Password must not be less than 8 or be undefined',
+      });
+    }
+    if (password !== retypePassword) {
+      return res.status(400).send({
+        status: 'Password error',
+        message: 'Password supplied deos not tally with retype password',
       });
     }
     /* encrypt password and stores in the database
@@ -45,8 +53,8 @@ export class UserSignup {
         });
       })
       .catch(err => res.status(400).send({
-        status: 'Fail',
-        message: 'This username already exist, enter a new one',
+        status: err.message,
+        message: 'This username already exist or invalid data supplied',
       }));
   }
 }
@@ -70,8 +78,8 @@ export class UserSignin {
       these values are parsed and then if there is an error it is returned
       if
      */
-    const { username, password } = req.body;
-    if (!username || !password) {
+    const { email, password } = req.body;
+    if (!email || !password) {
       return res.status(400).send({
         status: 'Fail',
         message: 'Please enter your username and password',
@@ -80,7 +88,7 @@ export class UserSignin {
     return Users // check the db if user has already signedup
       .findOne({
         where: {
-          username,
+          email,
           password,
         },
       })
