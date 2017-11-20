@@ -3,6 +3,8 @@ import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import Sequelize from 'sequelize';
+import { UserSignup, UserSignin } from './controllers/users';
+import auth from './auth/auth';
 import test from './test';
 
 const app = express(); // Application is Initialised
@@ -60,8 +62,8 @@ app.get('/api/v1/home', (req, res) => {
 });
 
 /* Signin and Signup API Endpoint */
-
-
+app.post('/api/v1/users/signup', UserSignup.signUp);
+app.post('/api/v1/users/signin', UserSignin.signIn);
 
 logger('dev');
 console.log('we are live on port', port);

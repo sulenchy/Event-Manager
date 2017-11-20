@@ -30,16 +30,16 @@ export default (sequelize, Sequelize) => {
       validate: {
         notEmpty: true,
       },
-      userType: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-          is: /^[a-z]+$/i,
-          notEmpty: true,
-        },
+    },
+    userType: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+        is: /^[a-z]+$/i,
+        notEmpty: true,
       },
     },
+
   });
   /* User has a relationship with centers and events */
   Users.associate = (model) => {
