@@ -81,7 +81,7 @@ export class UserSignin {
     const { email, password } = req.body;
     if (!email || !password) {
       return res.status(400).send({
-        status: 'Fail',
+        status: 'Sign-in Error',
         message: 'Please enter your username and password',
       });
     }
@@ -89,14 +89,13 @@ export class UserSignin {
       .findOne({
         where: {
           email,
-          password,
         },
       })
       .then((user) => {
         if (!user) { // returns an error if user has not signedup yet
           return res.status(400).send({
-            status: 'Fail',
-            err: 'User Not Found',
+            status: 'Sign-in Error',
+            message: 'User not found. Sign-in with correct data or signup as a new client',
           });
         }
         if (bcrypt.compareSync(password, user.password)) {
@@ -111,12 +110,12 @@ export class UserSignin {
           });
           return res.status(200).send({
             status: 'Success',
-            message: 'Token generation and signin successful',
+            message: 'Congratulation, you successfully signed-in into andevents',
             data: token,
           });
         }
         return res.status(400).send({
-          status: 'Fail',
+          status: 'Login Error',
           message: 'Incorrect Login Details supplied',
         });
       });
