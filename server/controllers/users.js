@@ -17,13 +17,21 @@ export class UserSignup {
  * @memberof UserSignup
  */
   static signUp(req, res) {
-    const { username, email, userType } = req.body;
+    const {
+      username, email, userType, retypePassword,
+    } = req.body;
     let { password } = req.body;
     /* Checks password length */
     if (password.length < 8) {
       return res.status(400).send({
-        status: 'Fail',
+        status: 'Password error',
         message: 'Password must not be less than 8 or be undefined',
+      });
+    }
+    if (password !== retypePassword) {
+      return res.status(400).send({
+        status: 'Password error',
+        message: 'Password supplied deos not tally with retype password',
       });
     }
     /* encrypt password and stores in the database
