@@ -4,6 +4,7 @@
   "description": "This is a project divided into three parts:",
   "main": "index.js",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "eslint": "^4.11.0",
     "eslint-config-airbnb": "^16.1.0",
