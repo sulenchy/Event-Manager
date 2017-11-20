@@ -18,17 +18,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ type: 'application/json' }));
 
-/* Event Manager Endpoint */
-app.get('/api/v1/home', (req, res) => {
-  res.status(200).send({
-    status: 'Success',
-    message: 'Welcome to Andevents API Endpoint!',
-  });
-});
-
+// testing babel
 test('Production is still working');
 console.log(process.env.SECRET_MESSAGE);
 
+// testing the database connection  starts here
 // const sequelize = new Sequelize(process.env.DATABASE_URL);
 
 const sequelize = new Sequelize(
@@ -54,6 +48,20 @@ sequelize
   .catch((err) => {
     console.error('Unable to connect to the database:', err);
   });
+
+// testing database connection stops here
+
+/* Event Manager Endpoint */
+app.get('/api/v1/home', (req, res) => {
+  res.status(200).send({
+    status: 'Success',
+    message: 'Welcome to Andevents API Endpoint!',
+  });
+});
+
+/* Signin and Signup API Endpoint */
+
+
 
 logger('dev');
 console.log('we are live on port', port);
