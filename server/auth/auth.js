@@ -36,5 +36,6 @@ export default { // exported into the server module/file
         message: 'Please send your token along with your request',
       });
     }
+    return '';
   },
 };

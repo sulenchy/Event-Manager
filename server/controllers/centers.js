@@ -1,5 +1,5 @@
 // import dependencies
-import { Centers, Users } from '../models';
+import { Centers } from '../models';
 
 /**
  * This is a AddNewCenter class that allows a client to signup
@@ -59,7 +59,7 @@ export class AddNewCenter {
  * @class GetCenterList
  */
 export class GetCenterList {
-    /**
+  /**
      * parse values from the req.body & req.decoded
      * @param {object} req - The request object from the client
      * @param {object} res - The response object to the client
@@ -67,31 +67,31 @@ export class GetCenterList {
      * @static
      * @memberof GetCenterList
      */
-    static listAll(req, res) {
-      /* Get all recipes */
-      return Centers
-        .findAll({
-          order: [['name', 'ASC']],
-        })
-        .then((center) => {
-          /* Checks if db is empty and returns a notice to enter a recipe */
-          if (center.length === 0) {
-            return res.status(400).send({
-              status: 'Fail',
-              message: 'Sorry, No center is available.',
-              data: center,
-            });
-          }
-          return res.status(200).send({
-            status: 'Success',
-            message: 'Centers below',
+  static listAll(req, res) {
+    /* Get all recipes */
+    return Centers
+      .findAll({
+        order: [['name', 'ASC']],
+      })
+      .then((center) => {
+        /* Checks if db is empty and returns a notice to enter a recipe */
+        if (center.length === 0) {
+          return res.status(400).send({
+            status: 'Fail',
+            message: 'Sorry, No center is available.',
             data: center,
           });
-        })
-        .catch(error => res.status(400).send({
-          status: 'Failed',
-          message: '',
-        }));
-    }
+        }
+        return res.status(200).send({
+          status: 'Success',
+          message: 'Centers below',
+          data: center,
+        });
+      })
+      .catch(error => res.status(400).send({
+        status: 'Failed',
+        message: '',
+      }));
   }
-  
+}
+
