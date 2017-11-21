@@ -16,9 +16,9 @@ export class AddNewCenter {
  */
   static addNew(req, res) {
     /** Get the user type */
-    const  userType  = req.decoded.userType;
+    const userType = req.decoded.userType;
     if (userType !== 'admin') {
-        console.log('userType: ',userType, );
+      console.log('userType: ', userType);
       return res.status(401).send({
         status: 'Authority Error',
         message: 'Sorry, you do not have the required previledge to the resource',
@@ -52,3 +52,11 @@ export class AddNewCenter {
   }
 }
 
+/**
+* This is a AddNewCenter class that allows a client to signup
+* @export
+* @class GetCenterList
+*/
+export class GetCenterList {
+
+}
