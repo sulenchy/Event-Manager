@@ -35,6 +35,7 @@ export default (sequelize, Sequelize) => {
     event_date: {
       type: Sequelize.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         isDate: true,
         notEmpty: true,

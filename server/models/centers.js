@@ -1,10 +1,10 @@
 export default (sequelize, Sequelize) => {
   const Centers = sequelize.define('Centers', {
     name: {
-      type: Sequelize.STRING,
+      type: Sequelize.TEXT,
       allowNull: false,
+      unique: true,
       validate: {
-        is: /^[a-z]+$/i,
         notEmpty: true,
       },
     },

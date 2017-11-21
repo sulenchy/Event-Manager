@@ -15,17 +15,19 @@ export class AddNewCenter {
  * @memberof AddNewCenter
  */
   static addNew(req, res) {
-    const {
-      name, address, capacity, cost, facilities, image,
-    } = req.body;
     /** Get the user type */
-    const { userType } = req.decoded.userType;
+    const  userType  = req.decoded.userType;
     if (userType !== 'admin') {
+        console.log('userType: ',userType, );
       return res.status(401).send({
         status: 'Authority Error',
         message: 'Sorry, you do not have the required previledge to the resource',
       });
     }
+    const {
+      name, address, capacity, cost, facilities, image,
+    } = req.body;
+    const userId = req.decoded.userId;
     return Centers
       .create({
         name,
@@ -44,7 +46,7 @@ export class AddNewCenter {
         });
       })
       .catch(err => res.status(400).send({
-        status: 'Error adding new center',
+        status: err.message,
         message: 'This center name already exist or invalid data supplied',
       }));
   }

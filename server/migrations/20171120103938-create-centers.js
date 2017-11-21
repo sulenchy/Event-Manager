@@ -8,8 +8,9 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       name: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false,
+        unique: true,
       },
       address: {
         type: Sequelize.TEXT,
