@@ -27,7 +27,7 @@ export class AddNewCenter {
     const {
       name, address, capacity, cost, facilities, image,
     } = req.body;
-    const userId = req.decoded.userId;
+    const userId = req.decoded.id;
     return Centers
       .create({
         name,
@@ -36,6 +36,7 @@ export class AddNewCenter {
         cost,
         facilities,
         image,
+        userId,
       })
       .then((center) => {
         res.status(201).send({
