@@ -12,7 +12,6 @@ export default (sequelize, Sequelize) => {
       type: Sequelize.TEXT,
       allowNull: false,
       validate: {
-        isAlphanumeric: true,
         notEmpty: true,
       },
     },
@@ -20,7 +19,6 @@ export default (sequelize, Sequelize) => {
       type: Sequelize.INTEGER,
       allowNull: false,
       validate: {
-        isNumber: true,
         notEmpty: true,
       },
     },
@@ -28,7 +26,6 @@ export default (sequelize, Sequelize) => {
       type: Sequelize.DECIMAL,
       allowNull: false,
       validate: {
-        isNumber: true,
         notEmpty: true,
       },
     },
@@ -36,15 +33,13 @@ export default (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
-        is: /^[a-z]+$/i,
         notEmpty: true,
       },
     },
     image: {
       type: Sequelize.BLOB,
-      allowNull: false,
+      allowNull: true,
       validate: {
-        isAlphanumeric: true,
         notEmpty: true,
       },
     },

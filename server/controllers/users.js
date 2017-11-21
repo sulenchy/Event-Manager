@@ -53,7 +53,7 @@ export class UserSignup {
         });
       })
       .catch(err => res.status(400).send({
-        status: err.message,
+        status: 'Error signing up',
         message: 'This username already exist or invalid data supplied',
       }));
   }
@@ -82,7 +82,7 @@ export class UserSignin {
     if (!email || !password) {
       return res.status(400).send({
         status: 'Sign-in Error',
-        message: 'Please enter your username and password',
+        message: 'Please enter your email and password',
       });
     }
     return Users // check the db if user has already signedup
@@ -104,7 +104,7 @@ export class UserSignin {
             if password is correct, save the user id in a token
             and send this to the user for authentication.
            */
-          const payload = { id: user.id };
+          const payload = { id: user.id, email: user.email, userType: user.userType };
           const token = jwt.sign(payload, process.env.SECRET, {
             expiresIn: '3h',
           });
