@@ -4,7 +4,7 @@ import logger from 'morgan';
 import bodyParser from 'body-parser';
 import Sequelize from 'sequelize';
 import { UserSignup, UserSignin } from './controllers/users';
-import { AddNewCenter } from './controllers/centers';
+import { AddNewCenter, GetCenterList } from './controllers/centers';
 import auth from './auth/auth';
 import test from './test';
 
@@ -67,14 +67,14 @@ app.post('/api/v1/users/signup', UserSignup.signUp);
 app.post('/api/v1/users/signin', UserSignin.signIn);
 
 
-app.use(auth.verifyUser);
 
 /**
- * Recipes endpoints requiring authentication before getting access
+ * Centers endpoints requiring authentication before getting access
  *to different points of the application
  */
-
+app.use(auth.verifyUser);
 app.post('/api/v1/centers', AddNewCenter.addNew);
+
 
 logger('dev');
 console.log('we are live on port', port);
