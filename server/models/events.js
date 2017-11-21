@@ -1,18 +1,16 @@
 export default (sequelize, Sequelize) => {
   const Events = sequelize.define('Events', {
     title: {
-      type: Sequelize.STRING,
+      type: Sequelize.TEXT,
       allowNull: false,
       validate: {
-        is: /^[a-z]+$/i,
         notEmpty: true,
       },
     },
     description: {
-      type: Sequelize.STRING,
+      type: Sequelize.TEXT,
       allowNull: false,
       validate: {
-        isAlphanumeric: true,
         notEmpty: true,
       },
     },
@@ -20,20 +18,18 @@ export default (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
-        is: /^[a-z]+$/i,
         notEmpty: true,
       },
     },
     estimated_attendees: {
-      type: Sequelize.STRING,
+      type: Sequelize.INTEGER,
       allowNull: false,
       validate: {
-        isNumber: true,
         notEmpty: true,
       },
     },
     event_date: {
-      type: Sequelize.STRING,
+      type: Sequelize.DATEONLY,
       allowNull: false,
       unique: true,
       validate: {
@@ -41,18 +37,10 @@ export default (sequelize, Sequelize) => {
         notEmpty: true,
       },
     },
-    preferred_center: {
-      type: Sequelize.STRING,
-      allowNull: true,
-      validate: {
-        is: /^[a-z]+$/i,
-      },
-    },
     lga: {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
-        is: /^[a-z]+$/i,
         notEmpty: true,
       },
     },

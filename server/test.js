@@ -1,5 +1,12 @@
-const test = (msg) => {
-  console.log(msg);
-};
+const users = [
 
-export default test;
+];
+
+const events = [
+
+];
+
+const centers = [
+
+];
+
