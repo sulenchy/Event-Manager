@@ -71,7 +71,7 @@ export class GetCenterList {
       /* Get all recipes */
       return Centers
         .findAll({
-          order: [['name', 'DESC']],
+          order: [['name', 'ASC']],
         })
         .then((center) => {
           /* Checks if db is empty and returns a notice to enter a recipe */
