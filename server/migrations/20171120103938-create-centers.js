@@ -7,12 +7,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       name: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
+        allowNull: false,
+        unique: true,
+      },
+      address: {
+        type: Sequelize.TEXT,
         allowNull: false,
       },
       capacity: {

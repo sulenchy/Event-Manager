@@ -4,6 +4,7 @@ import logger from 'morgan';
 import bodyParser from 'body-parser';
 import Sequelize from 'sequelize';
 import { UserSignup, UserSignin } from './controllers/users';
+import { AddNewCenter } from './controllers/centers';
 import auth from './auth/auth';
 import test from './test';
 
@@ -64,6 +65,16 @@ app.get('/api/v1/home', (req, res) => {
 /* Signin and Signup API Endpoint */
 app.post('/api/v1/users/signup', UserSignup.signUp);
 app.post('/api/v1/users/signin', UserSignin.signIn);
+
+
+app.use(auth.verifyUser);
+
+/**
+ * Recipes endpoints requiring authentication before getting access
+ *to different points of the application
+ */
+
+app.post('/api/v1/centers', AddNewCenter.addNew);
 
 logger('dev');
 console.log('we are live on port', port);
