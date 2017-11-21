@@ -53,3 +53,45 @@ export class AddNewCenter {
   }
 }
 
+/**
+ * This is a Recipes class that allows you get all recipes a user has posted
+ * @export listAll method
+ * @class GetCenterList
+ */
+export class GetCenterList {
+    /**
+     * parse values from the req.body & req.decoded
+     * @param {object} req - The request object from the client
+     * @param {object} res - The response object to the client
+     * @returns {object} JSON -The JSON returned to the client as response containing all centers
+     * @static
+     * @memberof GetCenterList
+     */
+    static listAll(req, res) {
+      /* Get all recipes */
+      return Centers
+        .findAll({
+          order: [['name', 'DESC']],
+        })
+        .then((center) => {
+          /* Checks if db is empty and returns a notice to enter a recipe */
+          if (center.length === 0) {
+            return res.status(400).send({
+              status: 'Fail',
+              message: 'Sorry, No center is available.',
+              data: center,
+            });
+          }
+          return res.status(200).send({
+            status: 'Success',
+            message: 'Centers below',
+            data: center,
+          });
+        })
+        .catch(error => res.status(400).send({
+          status: 'Failed',
+          message: '',
+        }));
+    }
+  }
+  

@@ -65,7 +65,7 @@ app.get('/api/v1/home', (req, res) => {
 /* Signin and Signup API Endpoint */
 app.post('/api/v1/users/signup', UserSignup.signUp);
 app.post('/api/v1/users/signin', UserSignin.signIn);
-
+app.get('/api/v1/centers', GetCenterList.listAll);
 
 
 /**
