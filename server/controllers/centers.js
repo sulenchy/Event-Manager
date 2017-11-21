@@ -53,11 +53,3 @@ export class AddNewCenter {
   }
 }
 
-/**
-* This is a AddNewCenter class that allows a client to signup
-* @export
-* @class GetCenterList
-*/
-export class GetCenterList {
-
-}
