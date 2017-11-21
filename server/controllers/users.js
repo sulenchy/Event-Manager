@@ -18,9 +18,14 @@ export class UserSignup {
  */
   static signUp(req, res) {
     const {
-      username, email, userType, retypePassword,
+      retypePassword,
     } = req.body;
-    let { password } = req.body;
+    // const emailLowerCase = email.toLowerCase();
+
+    let { email, password, username, userType } = req.body;
+    email = email.toLowerCase();
+    username = username.toLowerCase();
+    userType = userType.toLowerCase();
     /* Checks password length */
     if (password.length < 8) {
       return res.status(400).send({
@@ -53,7 +58,7 @@ export class UserSignup {
         });
       })
       .catch(err => res.status(400).send({
-        status: 'Error signing up',
+        status: err.message,
         message: 'This username already exist or invalid data supplied',
       }));
   }

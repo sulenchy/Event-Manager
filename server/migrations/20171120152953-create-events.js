@@ -24,17 +24,13 @@ module.exports = {
         allowNull: false,
       },
       event_date: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DATEONLY,
         allowNull: false,
         unique: true,
       },
-      createdAt: {
+      lga: {
+        type: Sequelize.STRING,
         allowNull: false,
-        type: Sequelize.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
       },
       userId: {
         type: Sequelize.INTEGER,
@@ -53,6 +49,14 @@ module.exports = {
           key: 'id',
           as: 'centerId',
         },
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
       },
     }); 
   },

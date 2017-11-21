@@ -16,30 +16,33 @@ export class AddNewEvent {
  */
   static addNew(req, res) {
     const {
-      name, address, capacity, cost, facilities, image,
+      title, description, event_type, estimated_attendees, lga, centerId
     } = req.body;
+    let { event_date } = req.body;
+    event_date = Date.parse(event_date);
     const userId = req.decoded.id;
-    return Centers
+    return Events
       .create({
-        name,
-        address,
-        capacity,
-        cost,
-        facilities,
-        image,
+        title, 
+        description, 
+        event_type, 
+        estimated_attendees, 
+        event_date, 
+        lga, 
+        centerId,
         userId,
       })
-      .then((center) => {
+      .then((event) => {
         res.status(201).send({
           status: 'Success',
           message: 'Center added successfully',
-          username: center.name,
-          id: center.id,
+          username: event.name,
+          id: event.id,
         });
       })
       .catch(err => res.status(400).send({
         status: err.message,
-        message: 'This center name already exist or invalid data supplied',
+        message: 'Sorry, Invalid data supplied',
       }));
   }
 }

@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ type: 'application/json' }));
 
 // testing babel
-test('Production is still working');
+// test('Production is still working');
 console.log(process.env.SECRET_MESSAGE);
 
 // testing the database connection  starts here

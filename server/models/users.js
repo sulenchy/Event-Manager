@@ -16,9 +16,6 @@ export default (sequelize, Sequelize) => {
         isEmail: {
           msg: 'Please enter a valid email address',
         },
-        isLowercase: {
-          msg: 'your email must be in lowercase',
-        },
       },
       unique: {
         args: true,
