@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import Sequelize from 'sequelize';
 import { UserSignup, UserSignin } from './controllers/users';
 import { AddNewCenter, GetCenterList } from './controllers/centers';
+import { AddNewEvent } from './controllers/events';
 import auth from './auth/auth';
 import test from './test';
 
@@ -74,7 +75,7 @@ app.get('/api/v1/centers', GetCenterList.listAll);
  */
 app.use(auth.verifyUser);
 app.post('/api/v1/centers', AddNewCenter.addNew);
-
+app.post('/api/v1/events', AddNewEvent.addNew);
 
 logger('dev');
 console.log('we are live on port', port);
