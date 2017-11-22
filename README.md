@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/sulenchy/Event-Manager.svg?branch=develop)](https://travis-ci.org/sulenchy/Event-Manager)
+
 # Intorduction
 This is a project divided into three parts:
 

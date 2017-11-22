@@ -1,14 +1,26 @@
 language: node_js
 
 node_js:
-  - "8.8.1"
+  - "stable"
+
+
+install:
+ - npm install
 
 script:
   - npm test
-  
-cache:
- - npm install
 
-after_success:
-   - npm run coverage
-   - npm run cover
+env:
+- NODE_ENV=test
+
+cache:
+  directories:
+  - "node_modules"
+
+services:
+  - postgresql
+
+before_script:
+  - createuser events -s -U postgres
+  - createdb testDb --username=postgres
+  - sequelize db:migrate

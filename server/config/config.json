@@ -8,11 +8,16 @@
     "port": 5432
   },
   "test": {    
-    "use_env_variable": "" 
+    "username": "postgres",
+    "password": "sulamaliatus",
+    "database": "testDb",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "port": 5432
   },
   "production": {
     "use_env_variable": "DATABASE_URL",
     "dialect": "postgres",
-    "port": 5432
+    "port": 54320
   }
 }
