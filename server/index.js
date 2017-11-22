@@ -52,7 +52,7 @@ app.post('/api/v1/centers', AddNewCenter.addNew);
  *to different points of the application
  */
 app.post('/api/v1/events', AddNewEvent.addNew);
-app.put('/api/v1/events/:eventId');
+app.put('/api/v1/events/:eventId', UpdateEvent.updateEvent);
 
 // logs transaction to the terminal
 logger('dev');
