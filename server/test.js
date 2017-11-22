@@ -91,7 +91,7 @@ describe('Signup with "/api/v1/users/signup"', () => {
       .expect(400)
       .then((res) => {
         console.log(res.body.message);
-        assert.equal(res.body.status, 'Validation error');
+        assert.equal(res.body.status, 'Error signing up');
         assert.deepEqual(res.body.message, 'This username already exist or invalid data supplied');
         assert.deepEqual(res.status, 400);
         done();
@@ -99,3 +99,54 @@ describe('Signup with "/api/v1/users/signup"', () => {
       .catch(err => done(err));
   });
 });
+
+/* Test for the signin endpoint */
+describe('Signin with "/api/v1/users/signin"', () => {
+  it('should return signin error with empty fields', (done) => {
+    request(app)
+      .post('/api/v1/users/signin')
+      .send({
+        email: 'tester@test.com',
+        password: '',
+      })
+      .expect(400)
+      .then((res) => {
+        assert.deepEqual(res.body.status, 'Sign-in Error');
+        assert.deepEqual(res.body.message, 'Please enter your email and password');
+        done();
+      });
+  });
+  it('should return "User not found info"', (done) => {
+    request(app)
+      .post('/api/v1/users/signin')
+      .send({
+        email: 'test',
+        password: 'tester',
+      })
+      .expect(400)
+      .then((res) => {
+        assert.deepEqual(res.body.status, 'Sign-in Error');
+        assert.deepEqual(res.body.message, 'User not found. Sign-in with correct data or signup as a new client');
+        assert.deepEqual(res.status, 400);
+        done();
+      });
+  });
+  it('should return signin "Signin Error" error for wrong password', (done) => {
+    request(app)
+      .post('/api/v1/users/signin')
+      .send({
+        email: 'tester@test.com',
+        password: 'isdskunkun',
+      })
+      .expect(400)
+      .then((res) => {
+        console.log(res.body);
+        assert.deepEqual(res.body.status, 'Sign-in Error');
+        assert.deepEqual(res.body.message, 'User not found. Sign-in with correct data or signup as a new client');
+        assert.deepEqual(res.status, 400);
+        done();
+      });
+  });
+
+});
+

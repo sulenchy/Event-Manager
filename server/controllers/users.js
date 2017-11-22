@@ -58,7 +58,7 @@ export class UserSignup {
         });
       })
       .catch(err => res.status(400).send({
-        status: err.message,
+        status: 'Error signing up',
         message: 'This username already exist or invalid data supplied',
       }));
   }
@@ -94,6 +94,7 @@ export class UserSignin {
       .findOne({
         where: {
           email,
+          password,
         },
       })
       .then((user) => {
@@ -121,7 +122,7 @@ export class UserSignin {
         }
         return res.status(400).send({
           status: 'Login Error',
-          message: 'Incorrect Login Details supplied',
+          message: 'Incorrect login details supplied',
         });
       });
   }
