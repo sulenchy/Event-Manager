@@ -17,9 +17,7 @@ cache:
   - "node_modules"
 
 before_script:
-  - createuser events -s -U postgres
-  - createdb testDb --username=postgres
-  - sequelize db:migrate
+- psql -c 'create database testDb;' -U postgres
 
 script:
   - npm test
