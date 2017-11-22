@@ -3,24 +3,21 @@ language: node_js
 node_js:
   - "stable"
 
+services:
+  - postgresql
 
 install:
  - npm install
 
-script:
-  - npm test
-
 env:
 - NODE_ENV=test
+
+before_script:
+- psql -c 'create database Event_Manager_Db;' -U postgres
+
+script:
+  - npm test
 
 cache:
   directories:
   - "node_modules"
-
-services:
-  - postgresql
-
-before_script:
-  - createuser events -s -U postgres
-  - createdb testDb --username=postgres
-  - sequelize db:migrate
