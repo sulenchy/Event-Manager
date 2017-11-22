@@ -19,6 +19,6 @@ after_success:
 services:
   - postgresql
 
-before_script:
-  - createdb testDb --username=postgres
-  - sequelize db:migrate
+# before_script:
+#   - createdb testDb --username=postgres
+#   - sequelize db:migrate
