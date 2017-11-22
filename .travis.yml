@@ -10,8 +10,8 @@ install:
 script:
   - npm test
 
-env:
-- NODE_ENV=test
+# env:
+# - NODE_ENV=test
 
 cache:
   directories:
