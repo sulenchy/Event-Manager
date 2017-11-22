@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": "postgres",
+    "username": process.env.,
     "password": "sulamaliatus",
     "database": "events-manager-db",
     "host": "127.0.0.1",
@@ -9,7 +9,7 @@
   },
   "test": {    
     "username": "postgres",
-    "password": "sulamaliatus",
+    "password": null,
     "database": "testDb",
     "host": "127.0.0.1",
     "dialect": "postgres",
