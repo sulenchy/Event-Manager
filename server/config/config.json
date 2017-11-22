@@ -10,7 +10,7 @@
   "test": {    
     "username": "postgres",
     "password": "sulamaliatus",
-    "database": "events-manager-db",
+    "database": "testDb",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "port": 5432

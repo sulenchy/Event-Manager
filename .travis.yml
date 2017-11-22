@@ -9,6 +9,9 @@ script:
 cache:
  - npm install
 
+env:
+- NODE_ENV=test
+
 after_success:
    - npm run coverage
    - npm run cover
@@ -17,4 +20,5 @@ services:
   - postgresql
 
 before_script:
-  - psql -c 'create database events_manager_db;' -U postgres
+  - createdb testDb --username=postgres
+  - sequelize db:migrate
