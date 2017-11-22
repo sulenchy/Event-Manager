@@ -22,6 +22,9 @@ Centers.destroy({
   restartIdentity: true,
 });
 
+let token;
+const expiredToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTEwMTMyODA5LCJleHAiOjE1MTAxNDM2MDl9.Kjyo44x-yMFaS4yO9rr0kzi2qxQ1NxIod7HS5IMUihc';
+
 /** testing the home endpoint */
 describe('GET "/api/v1/home", to test server ', () => {
   it('should respond with a 200 status code, status, and message', (done) => {
@@ -91,7 +94,7 @@ describe('Signup with "/api/v1/users/signup"', () => {
       .expect(400)
       .then((res) => {
         console.log(res.body.message);
-        assert.equal(res.body.status, 'Validation error');
+        assert.equal(res.body.status, 'Error signing up');
         assert.deepEqual(res.body.message, 'This username already exist or invalid data supplied');
         assert.deepEqual(res.status, 400);
         done();

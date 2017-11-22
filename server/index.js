@@ -1,6 +1,7 @@
 // import dependencies
 import express from 'express';
 import logger from 'morgan';
+import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import { UserSignup, UserSignin } from './controllers/users';
 import { AddNewCenter, GetCenterList } from './controllers/centers';
@@ -12,6 +13,7 @@ const app = express(); // Application is Initialised
 // log request to the console
 app.use(logger('dev'));
 
+dotenv.config();
 // Application port
 const port = process.env.PORT || 5005;
 
