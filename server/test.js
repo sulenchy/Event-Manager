@@ -22,7 +22,7 @@ Centers.destroy({
   restartIdentity: true,
 });
 
-
+/** testing the home endpoint */
 describe('GET "/api/v1/home", to test server ', () => {
   it('should respond with a 200 status code, status, and message', (done) => {
     request(app)
@@ -52,6 +52,47 @@ describe('Signup with "/api/v1/users/signup"', () => {
       .then((res) => {
         assert.equal(res.body.status, 'Password error');
         assert.deepEqual(res.body.message, 'Password must not be less than 8 or be undefined');
+        assert.deepEqual(res.status, 400);
+        done();
+      })
+      .catch(err => done(err));
+  });
+  it('Should successfully signup user', (done) => {
+    request(app)
+      .post('/api/v1/users/signup')
+      .send({
+        username: 'tester',
+        email: 'tester@test.com',
+        password: 'idreskunn',
+        userType: 'admin',
+        retypePassword: 'idreskunn',
+      })
+      .expect(201)
+      .then((res) => {
+        assert.deepEqual(res.body.status, 'Success');
+        assert.deepEqual(res.body.message, 'Account created successfully');
+        assert.deepEqual(res.body.username, 'tester');
+        assert.deepEqual(res.body.id, 1);
+        assert.deepEqual(res.status, 201);
+        done();
+      })
+      .catch(err => done(err));
+  });
+  it('should return "user already exists" error', (done) => {
+    request(app)
+      .post('/api/v1/users/signup')
+      .send({
+        username: 'tester',
+        email: 'tester@test.com',
+        password: 'idreskunn',
+        userType: 'admin',
+        retypePassword: 'idreskunn',
+      })
+      .expect(400)
+      .then((res) => {
+        console.log(res.body.message);
+        assert.equal(res.body.status, 'Validation error');
+        assert.deepEqual(res.body.message, 'This username already exist or invalid data supplied');
         assert.deepEqual(res.status, 400);
         done();
       })
