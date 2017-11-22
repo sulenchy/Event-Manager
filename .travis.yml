@@ -23,5 +23,4 @@ services:
 before_script:
   - createuser events -s -U postgres
   - createdb testDb --username=postgres
-  - sequelize init
   - sequelize db:migrate
