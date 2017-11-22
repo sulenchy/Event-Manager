@@ -1,20 +1,22 @@
 language: node_js
 
 node_js:
-  - "8.8.1"
+  - "stable"
+
+
+install:
+ - npm install
 
 script:
   - npm test
-  
-cache:
- - npm install
 
 env:
 - NODE_ENV=test
 
-after_success:
-   - npm run coverage
-   - npm run cover
+cache:
+  directories:
+  - "node_modules"
+
 
 services:
   - postgresql
