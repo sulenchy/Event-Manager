@@ -2,10 +2,9 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-import Sequelize from 'sequelize';
 import { UserSignup, UserSignin } from './controllers/users';
 import { AddNewCenter, GetCenterList } from './controllers/centers';
-import { AddNewEvent } from './controllers/events';
+import { AddNewEvent, UpdateEvent } from './controllers/events';
 import auth from './auth/auth';
 
 const app = express(); // Application is Initialised
@@ -25,35 +24,6 @@ app.use(bodyParser.json({ type: 'application/json' }));
 // test('Production is still working');
 console.log(process.env.SECRET_MESSAGE);
 
-// testing the database connection  starts here
-// const sequelize = new Sequelize(process.env.DATABASE_URL);
-
-// const sequelize = new Sequelize(
-//   process.env.DB_NAME, process.env.DB_USERNAME,
-//   process.env.DB_PASSWORD, {
-//     host: process.env.DB_HOST,
-//     dialect: 'postgres',
-
-//     pool: {
-//       max: 5,
-//       min: 0,
-//       acquire: 30000,
-//       idle: 10000,
-//     },
-//   },
-// );
-
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log('Connection has been established successfully.');
-//   })
-//   .catch((err) => {
-//     console.error('Unable to connect to the database:', err);
-//   });
-
-// testing database connection stops here
-
 /* Event Manager Endpoint */
 app.get('/api/v1/home', (req, res) => {
   res.status(200).send({
@@ -67,16 +37,28 @@ app.post('/api/v1/users/signup', UserSignup.signUp);
 app.post('/api/v1/users/signin', UserSignin.signIn);
 app.get('/api/v1/centers', GetCenterList.listAll);
 
+// authenticate the secure endpoint
+app.use(auth.verifyUser);
 
 /**
  * Centers endpoints requiring authentication before getting access
  *to different points of the application
  */
-app.use(auth.verifyUser);
-app.post('/api/v1/centers', AddNewCenter.addNew);
-app.post('/api/v1/events', AddNewEvent.addNew);
 
+app.post('/api/v1/centers', AddNewCenter.addNew);
+
+/**
+ * Events endpoints requiring authentication before getting access
+ *to different points of the application
+ */
+app.post('/api/v1/events', AddNewEvent.addNew);
+app.put('/api/v1/events/:eventId');
+
+// logs transaction to the terminal
 logger('dev');
+
+// logs a string message about what port we are using to the terminal
 console.log('we are live on port', port);
-// Start server on port 5000
+
+// starts server
 export default app.listen(port);
