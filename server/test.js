@@ -22,6 +22,9 @@ Centers.destroy({
   restartIdentity: true,
 });
 
+let token;
+const expiredToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTEwMTMyODA5LCJleHAiOjE1MTAxNDM2MDl9.Kjyo44x-yMFaS4yO9rr0kzi2qxQ1NxIod7HS5IMUihc';
+
 /** testing the home endpoint */
 describe('GET "/api/v1/home", to test server ', () => {
   it('should respond with a 200 status code, status, and message', (done) => {
@@ -141,12 +144,35 @@ describe('Signin with "/api/v1/users/signin"', () => {
       .expect(400)
       .then((res) => {
         console.log(res.body);
-        assert.deepEqual(res.body.status, 'Sign-in Error');
-        assert.deepEqual(res.body.message, 'User not found. Sign-in with correct data or signup as a new client');
+        assert.deepEqual(res.body.status, 'Login Error');
+        assert.deepEqual(res.body.message, 'Incorrect login details supplied');
         assert.deepEqual(res.status, 400);
         done();
       });
   });
-
+  it('should return signin 200 "Success" status with token', (done) => {
+    request(app)
+      .post('/api/v1/users/signin')
+      .send({
+        username: 'tester',
+        email: 'tester@test.com',
+        password: 'idreskunn'
+      })
+      .expect(200)
+      .then((res) => {
+        console.log(res.body);
+        assert.deepEqual(res.body.status, 'Success');
+        assert.deepEqual(res.body.message, 'Congratulation, you successfully signed-in into andevents');
+        assert.deepEqual(res.status, 200);
+        token = res.body.data;
+        console.log(res.body);
+        done();
+      });
+  });
 });
 
+
+/* Test for the AddNewCenter endpoint */
+describe('Signin with "/api/v1/users/signin"', () => {
+  
+});

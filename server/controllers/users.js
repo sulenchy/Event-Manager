@@ -94,7 +94,6 @@ export class UserSignin {
       .findOne({
         where: {
           email,
-          password,
         },
       })
       .then((user) => {
