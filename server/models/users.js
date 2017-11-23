@@ -32,6 +32,7 @@ export default (sequelize, Sequelize) => {
     userType: {
       type: Sequelize.STRING,
       allowNull: false,
+      defaultValue: 'client',
       validate: {
         is: /^[a-z]+$/i,
         notEmpty: true,
