@@ -2,7 +2,7 @@
 import { Centers, Events } from '../models';
 
 /**
- * This is a AddNewCenter class that allows a client to signup
+ * This is a AddNewCenter class that allows a admin to add new center
  * @export
  * @class AddNewCenter
  */
@@ -54,7 +54,7 @@ export class AddNewCenter {
 }
 
 /**
- * This is a Recipes class that allows you get all recipes a user has posted
+ * This is a GetCenterList class that allows you get all center a user has posted
  * @export listAll method
  * @class GetCenterList
  */
@@ -95,7 +95,11 @@ export class GetCenterList {
   }
 }
 
-
+/**
+ * This is a GetCenterWithClient class that allows a user to get a center with slated event
+ * @export
+ * @class GetCenterWithEvent
+ */
 export class GetCenterWithEvent {
   /**
    * Get the details of a center
@@ -133,6 +137,62 @@ export class GetCenterWithEvent {
       .catch(error => res.status(400).send({
         status: `Center ${error.status}`,
         message: 'Selected center cannot be found',
+      }));
+  }
+}
+
+
+/**
+ * This is a UpdateCenter class that allows a user to update center
+ * @export
+ * @class UpdateCenter
+ */
+
+export class UpdateCenter {
+  /**
+ * parse values from the req.body & req.decoded
+ * @param {object} req - The request object from the client
+ * @param {object} res - The response object to the client
+ * @return {object|JSON|array} - JSON is returned signifying success or failr of
+ *                              the modified event.
+ * @static
+ * @memberof UpdateEvent
+ */
+  static updateCenter(req, res) {
+    /* Grab values to be used to authenticate from the request object */
+    const userId = req.decoded.id;
+    const availableStatus = false;
+    /* Finds a event to be updated */
+    return Centers
+      .find({
+        where: {
+          id: parseInt(req.params.id, 10),
+          userId,
+        },
+      })
+      .then((center) => {
+        if (!center) {
+          return res.status(404).send({
+            status: 'Error finding the Event',
+            message: 'Sorry, the selected event cannot be found',
+            data: center,
+          });
+        }
+        /* Updates the event and returns the updated event */
+        return center
+          .update({
+            available: availableStatus || center.available,
+          })
+          .then(updatedCenter => res.status(200).send({
+            status: 'Success',
+            message: 'Center details updated successfully',
+            data: updatedCenter,
+          }));
+        // .catch(err => res.status(400).send(err));
+      })
+      .catch(err => res.status(400).send({
+        status: `Event ${err.status}: Error finding center`,
+        message: 'Sorry, Center cannot be found. Please supply valid center id',
       }));
   }
 }
