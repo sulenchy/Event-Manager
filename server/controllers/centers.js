@@ -130,6 +130,9 @@ export class GetCenterWithEvent {
           data: center,
         });
       })
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(400).send({
+        status: `Center ${error.status}`,
+        message: 'Selected center cannot be found',
+      }));
   }
 }
