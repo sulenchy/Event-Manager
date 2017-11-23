@@ -38,7 +38,15 @@ export default (sequelize, Sequelize) => {
     },
     image: {
       type: Sequelize.BLOB,
-      allowNull: true,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    available: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
       validate: {
         notEmpty: true,
       },

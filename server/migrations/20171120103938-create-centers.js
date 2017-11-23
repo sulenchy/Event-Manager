@@ -32,6 +32,11 @@ module.exports = {
         type: Sequelize.BLOB,
         allowNull: false,
       },
+      available: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
+      },
       userId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',

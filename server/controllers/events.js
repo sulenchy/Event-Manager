@@ -1,6 +1,6 @@
 // import dependencies
 import { Events, Users } from '../models';
-
+import { UpdateCenter } from './centers';
 /**
  * This is a AddNewCenter class that allows a client to signup
  * @export
@@ -39,6 +39,7 @@ export class AddNewEvent {
           username: event.name,
           id: event.id,
         });
+        UpdateCenter.updateCenter;
       })
       .catch(err => res.status(400).send({
         status: `Event ${err.status}: Error adding new event`,
@@ -104,7 +105,7 @@ export class UpdateEvent {
 }
 
 export class DeleteEvent {
-	/**
+  /**
  * parse values from the req.body & req.decoded to be used to delete the recipe
  * @static
  * @param {object} req - The request object from the client
@@ -112,10 +113,10 @@ export class DeleteEvent {
  * @return {object} JSON object notifying the success of the delete request
  * @memberof RecipeDelete
  */
-static deleteEvent(req, res) {
+  static deleteEvent(req, res) {
     /* Checks if user is authenticated */
     const userId = req.decoded.id;
-    
+
     /* if authenticated, we find the event we want to delete */
     return Events
       .find({
@@ -142,7 +143,7 @@ static deleteEvent(req, res) {
       })
       .catch(() => res.status(404).send({
         status: 'Fail',
-        message: 'Please enter a number'
+        message: 'Please enter a number',
       }));
   }
 }

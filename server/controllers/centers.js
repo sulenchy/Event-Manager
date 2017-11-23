@@ -2,7 +2,7 @@
 import { Centers, Events } from '../models';
 
 /**
- * This is a AddNewCenter class that allows a client to signup
+ * This is a AddNewCenter class that allows a admin to add new center
  * @export
  * @class AddNewCenter
  */
@@ -47,14 +47,14 @@ export class AddNewCenter {
         });
       })
       .catch(err => res.status(400).send({
-        status: err.message,
+        status: `Operation ${err.status}`,
         message: 'This center name already exist or invalid data supplied',
       }));
   }
 }
 
 /**
- * This is a Recipes class that allows you get all recipes a user has posted
+ * This is a GetCenterList class that allows you get all center a user has posted
  * @export listAll method
  * @class GetCenterList
  */
@@ -77,7 +77,7 @@ export class GetCenterList {
         /* Checks if db is empty and returns a notice to enter a recipe */
         if (center.length === 0) {
           return res.status(400).send({
-            status: 'Fail',
+            status: 'Empty list found',
             message: 'Sorry, No center is available.',
             data: center,
           });
@@ -89,13 +89,17 @@ export class GetCenterList {
         });
       })
       .catch(error => res.status(400).send({
-        status: 'Failed',
-        message: '',
+        status: `Operation ${error.status}`,
+        message: 'Getting list of event failed',
       }));
   }
 }
 
-
+/**
+ * This is a GetCenterWithClient class that allows a user to get a center with slated event
+ * @export
+ * @class GetCenterWithEvent
+ */
 export class GetCenterWithEvent {
   /**
    * Get the details of a center
@@ -133,6 +137,63 @@ export class GetCenterWithEvent {
       .catch(error => res.status(400).send({
         status: `Center ${error.status}`,
         message: 'Selected center cannot be found',
+      }));
+  }
+}
+
+
+/**
+ * This is a UpdateCenter class that allows a user to update center
+ * @export
+ * @class UpdateCenter
+ */
+
+export class UpdateCenter {
+  /**
+ * parse values from the req.body & req.decoded
+ * @param {object} req - The request object from the client
+ * @param {object} res - The response object to the client
+ * @return {object|JSON|array} - JSON is returned signifying success or failr of
+ *                              the modified event.
+ * @static
+ * @memberof UpdateEvent
+ */
+
+  static updateCenter(req, res) {
+    /* Grab values to be used to authenticate from the request object */
+    const userId = req.decoded.id;
+
+    /* Finds a event to be updated */
+    return Centers
+      .find({
+        where: {
+          id: parseInt(req.params.id, 10),
+          userId,
+        },
+      })
+      .then((center) => {
+        if (!center) {
+          return res.status(404).send({
+            status: 'Error finding the Event',
+            message: 'Sorry, the selected event cannot be found',
+            data: center,
+          });
+        }
+        /* Updates the event and returns the updated event */
+        return center
+          .update({
+            available: center.available === true ? false : true,
+          })
+          .then(updatedCenter => res.status(200).send({
+            status: 'Success',
+            message: 'Center details updated successfully',
+            data: updatedCenter,
+          }));
+        // .catch(err => res.status(400).send(err));
+      })
+      .catch(err => res.status(400).send({
+        status: `Center ${err.status}: Error finding center`,
+        message: 'Sorry, Center cannot be found. Please supply valid center id',
       }));
   }
 }
