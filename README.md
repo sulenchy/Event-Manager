@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/sulenchy/Event-Manager.svg?branch=develop)](https://travis-ci.org/sulenchy/Event-Manager)
+[![Build Status](https://travis-ci.org/sulenchy/Event-Manager.svg?branch=develop)](https://travis-ci.org/sulenchy/Event-Manager) [![Coverage Status](https://coveralls.io/repos/github/sulenchy/Event-Manager/badge.svg?branch=develop)](https://coveralls.io/github/sulenchy/Event-Manager?branch=develop)
 
 # Intorduction
 This is a project divided into three parts:
@@ -22,6 +22,9 @@ The second part of this project is the Sever-side. The server-side is where the 
 The things needed before one can run this app are:
 * A broswer of your choice but preferably Google Chrome.
 * Internet
+
+# Documentation
+
 
 # Installing
 N/A

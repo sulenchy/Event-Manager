@@ -4,12 +4,12 @@ env:
 language: node_js
 node_js:
   - "stable"
-  
+
 env:
 - NODE_ENV=test
 
 before_script:
-  - psql -c 'create database event_database_dev;' -U postgres
+  - psql -c 'create database event_database_test;' -U postgres
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
