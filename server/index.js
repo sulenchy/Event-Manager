@@ -4,7 +4,7 @@ import logger from 'morgan';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import { UserSignup, UserSignin } from './controllers/users';
-import { AddNewCenter, GetCenterList } from './controllers/centers';
+import { AddNewCenter, GetCenterList, GetCenterWithEvent } from './controllers/centers';
 import { AddNewEvent, UpdateEvent, DeleteEvent } from './controllers/events';
 import auth from './auth/auth';
 
@@ -48,6 +48,7 @@ app.use(auth.verifyUser);
  */
 
 app.post('/api/v1/centers', AddNewCenter.addNew);
+app.get('/api/v1/centers/:id', GetCenterWithEvent.getCenter);
 
 /**
  * Events endpoints requiring authentication before getting access
