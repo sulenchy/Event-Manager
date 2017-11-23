@@ -1,5 +1,5 @@
 // import dependencies
-import { Centers } from '../models';
+import { Centers, Events } from '../models';
 
 /**
  * This is a AddNewCenter class that allows a client to signup
@@ -95,3 +95,41 @@ export class GetCenterList {
   }
 }
 
+
+export class GetCenterWithEvent {
+  /**
+   * Get the details of a center
+   * @param {object} req The request body of the request.
+   * @param {object} res The response body.
+   * @returns {object} res.
+   */
+  static getCenter(req, res) {
+    Centers.findOne({
+      where: {
+        id: req.params.id,
+      },
+      include: [
+        {
+          model: Events,
+          as: 'events',
+        },
+      ],
+    })
+      .then((center) => {
+      /* Checks if db is empty and returns a notice to enter a Center */
+        if (center.length === 0) {
+          return res.status(400).send({
+            status: 'Fail',
+            message: 'No Center available, please enter a Center.',
+            data: center,
+          });
+        }
+        return res.status(200).send({
+          status: 'Success',
+          message: 'Centers below',
+          data: center,
+        });
+      })
+      .catch(error => res.status(400).send(error));
+  }
+}
