@@ -13,7 +13,7 @@ env:
 - NODE_ENV=test
 
 before_script:
-- psql -c 'create database Event_Manager_Db;' -U postgres
+- psql -c 'create database event_manager_test;' -U postgres
 
 script:
   - npm test
