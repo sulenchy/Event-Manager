@@ -35,7 +35,7 @@ export class AddNewEvent {
       .then((event) => {
         res.status(201).send({
           status: 'Success',
-          message: 'Center added successfully',
+          message: 'Event added successfully',
           username: event.name,
           id: event.id,
         });
@@ -104,5 +104,45 @@ export class UpdateEvent {
 }
 
 export class DeleteEvent {
-
+	/**
+ * parse values from the req.body & req.decoded to be used to delete the recipe
+ * @static
+ * @param {object} req - The request object from the client
+ * @param {object} res - The response object to the client
+ * @return {object} JSON object notifying the success of the delete request
+ * @memberof RecipeDelete
+ */
+static deleteEvent(req, res) {
+    /* Checks if user is authenticated */
+    const userId = req.decoded.id;
+    
+    /* if authenticated, we find the event we want to delete */
+    return Events
+      .find({
+        where: {
+          id: parseInt(req.params.id, 10),
+          userId,
+        },
+      })
+      .then((event) => {
+        if (!event) {
+          return res.status(404).send({
+            status: 'Fail',
+            message: 'event Not Found',
+          });
+        }
+        /* Then we delete the event */
+        return event
+          .destroy()
+          .then(() => res.status(200).send({
+            status: 'Success',
+            message: 'Event successfully deleted',
+          }));
+        // .catch(err => res.status(404).send(err));
+      })
+      .catch(() => res.status(404).send({
+        status: 'Fail',
+        message: 'Please enter a number'
+      }));
+  }
 }
