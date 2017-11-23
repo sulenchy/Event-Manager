@@ -1,23 +1,22 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=381ae88192485c389abc63a1c89ec88b7e22bee2534130bf4b3333a007ea6e76
 language: node_js
-
 node_js:
   - "stable"
+
+before_script:
+  - psql -c 'create database event_database_dev;' -U postgres
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+after_success:
+  - npm run coverage
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 services:
   - postgresql
 
-install:
- - npm install
-
-env:
-- NODE_ENV=test
-
-before_script:
-- psql -c 'create database event_manager_test;' -U postgres
-
-script:
-  - npm test
-
-cache:
-  directories:
-  - "node_modules"
+addons:
+  postgresql: "9.6"
