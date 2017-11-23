@@ -47,7 +47,7 @@ export class AddNewCenter {
         });
       })
       .catch(err => res.status(400).send({
-        status: err.message,
+        status: `Operation ${err.status}`,
         message: 'This center name already exist or invalid data supplied',
       }));
   }
@@ -77,7 +77,7 @@ export class GetCenterList {
         /* Checks if db is empty and returns a notice to enter a recipe */
         if (center.length === 0) {
           return res.status(400).send({
-            status: 'Fail',
+            status: 'Empty list found',
             message: 'Sorry, No center is available.',
             data: center,
           });
@@ -89,8 +89,8 @@ export class GetCenterList {
         });
       })
       .catch(error => res.status(400).send({
-        status: 'Failed',
-        message: '',
+        status: `Operation ${error.status}`,
+        message: 'Getting list of event failed',
       }));
   }
 }
