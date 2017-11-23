@@ -158,10 +158,11 @@ export class UpdateCenter {
  * @static
  * @memberof UpdateEvent
  */
+
   static updateCenter(req, res) {
     /* Grab values to be used to authenticate from the request object */
     const userId = req.decoded.id;
-    const availableStatus = false;
+
     /* Finds a event to be updated */
     return Centers
       .find({
@@ -181,7 +182,7 @@ export class UpdateCenter {
         /* Updates the event and returns the updated event */
         return center
           .update({
-            available: availableStatus || center.available,
+            available: center.available === true ? false : true,
           })
           .then(updatedCenter => res.status(200).send({
             status: 'Success',
@@ -191,7 +192,7 @@ export class UpdateCenter {
         // .catch(err => res.status(400).send(err));
       })
       .catch(err => res.status(400).send({
-        status: `Event ${err.status}: Error finding center`,
+        status: `Center ${err.status}: Error finding center`,
         message: 'Sorry, Center cannot be found. Please supply valid center id',
       }));
   }
