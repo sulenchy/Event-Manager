@@ -4,6 +4,9 @@ env:
 language: node_js
 node_js:
   - "stable"
+  
+env:
+- NODE_ENV=test
 
 before_script:
   - psql -c 'create database event_database_dev;' -U postgres
