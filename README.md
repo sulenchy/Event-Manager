@@ -24,7 +24,12 @@ The things needed before one can run this app are:
 * Internet
 
 # Documentation
+To signup using POSTMAN
 
+Goto the address
+choose POST request and select x-www-form-urlencoded
+enter in the body of the request username: your-chosen-username email: your-chosen-email password: your-chosen-password
+send the request and you should get a success response if your request was successful and an error will be return if unsuccessful
 
 # Installing
 N/A
