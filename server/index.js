@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import { UserSignup, UserSignin } from './controllers/users';
 import { AddNewCenter, GetCenterList } from './controllers/centers';
-import { AddNewEvent, UpdateEvent } from './controllers/events';
+import { AddNewEvent, UpdateEvent, DeleteEvent } from './controllers/events';
 import auth from './auth/auth';
 
 const app = express(); // Application is Initialised
@@ -55,7 +55,7 @@ app.post('/api/v1/centers', AddNewCenter.addNew);
  */
 app.post('/api/v1/events', AddNewEvent.addNew);
 app.put('/api/v1/events/:id', UpdateEvent.updateEvent);
-
+app.delete('/api/v1/events/:id', DeleteEvent.deleteEvent);
 // logs transaction to the terminal
 logger('dev');
 
