@@ -1,3 +1,4 @@
+# Event Manager
 [![Build Status](https://travis-ci.org/sulenchy/Event-Manager.svg?branch=develop)](https://travis-ci.org/sulenchy/Event-Manager) [![Coverage Status](https://coveralls.io/repos/github/sulenchy/Event-Manager/badge.svg?branch=develop)](https://coveralls.io/github/sulenchy/Event-Manager?branch=develop)
 
 # Intorduction
@@ -24,42 +25,80 @@ The things needed before one can run this app are:
 * Internet
 
 # Documentation
-To signup using POSTMAN
+*   To signup using POSTMAN
 
-Goto the address
-choose POST request and select x-www-form-urlencoded
-enter in the body of the request username: your-chosen-username email: your-chosen-email password: your-chosen-password
-send the request and you should get a success response if your request was successful and an error will be return if unsuccessful
+1.  Goto the address(localhost:8000/api/v1/users/signin)
+2.  choose POST request and select x-www-form-urlencoded
+3.  enter in the body of the request  email: your-chosen-email password: our-chosen-password
+4.  send the request and you should get a success response if your request was successful else an error will be return
 
-# Installing
-N/A
+*   To POST a User using POSTMAN
+
+1.  Goto to the POST User endpoint(localhost:8000/api/v1/users/signup)
+
+2.  supply in the body of your request the following:
+    *   username: name-of-the-client
+    *   email: email-of-the-client
+    *   password: password-of-the-client
+    *   retypePassword: password-of-the-client
+    *   userType: admin-or-client
+3.  Send the POST request, if your request was successful you'll get a response showing the recipe you just added if the request was unsuccessful, it will return the error.
+
+
+*   To POST a Center using POSTMAN
+
+1.  Goto to the POST Center endpoint(localhost:8000/api/v1/centers)
+
+2.  supply in the body of your request the following:
+    *   name: name-of-the-center
+    *   address: address-of-the-center
+    *   capacity: capacity-of-the-capacity
+    *   facilities: facilities-of-the-facilities
+    *   image: image-of-the-center
+    *   cost: cost-of-the-center
+3.  Send the POST request, if your request was successful you'll get a response showing the recipe you just added if the request was unsuccessful, it will return the error.
+
+
+*   To GET all Centers using POSTMAN
+
+1.  Goto to the GET Center endpoint(localhost:8000/api/v1/centers)
+
+2.  send the GET request, if your request was successful you'll get a 200 status response showing the list of Centers you requested for and if the request was unsuccessful, it will return a 403 error and the resource will be unavailable to you.
+
+
+*   To GET a Center using POSTMAN
+
+1.  Goto to the GET Center endpoint(localhost:8000/api/v1/centers/1)
+
+2.  send the GET request, if your request was successful you'll get a 200 status response showing the Center you requested for with slated events and if the request was unsuccessful, it will return a 403 error and the resource will be unavailable to you.
+
+*   To POST a Event using POSTMAN
+
+1.  Goto to the POST Event endpoint(localhost:8000/api/v1/events)
+
+2.  supply in the body of your request the following:
+    *   title: name-of-the-center
+    *   description: address-of-the-center
+    *   event-type: capacity-of-the-capacity
+    *   estimated_attendees: facilities-of-the-facilities
+    *   event_date: image-of-the-center
+    *   lga: cost-of-the-center
+    *   centerId: cost-of-the-center
+3.  Send the POST request, if your request was successful you'll get a response showing the recipe you just added if the request was unsuccessful, it will return the error.
 
 # Running Test
 To run the template of the app, you only need the URL below: 
 https://sulenchy.github.io/Event-Manager/template/index.html
 
-# Break down into end to end tests
-N/A
-
-# coding style tests
-N/A
-
-# Deployment
-N/A
+To run the api endpoint on Heroku:
 
 # Built With
-* HTML/CSS
-* Javascript
-* Twitter Bootstrap / Font Awesome
-* Node.js
-* Express.js
-* Postgresql
-
-# Contributing
-N/A
-
-# Versioning
-N/A
+    HTML/CSS
+    * Javascript
+    * Twitter Bootstrap / Font Awesome
+    * Node.js
+    * Express.js
+    * Postgresql
 
 # Authors
 Abudu Abiodun Sulaiman (Sulenchy)
