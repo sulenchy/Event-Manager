@@ -141,7 +141,7 @@ export class DeleteEvent {
           }));
         // .catch(err => res.status(404).send(err));
       })
-      .catch(() => res.status(404).send({
+      .catch(err => res.status(404).send({
         status: 'Fail',
         message: 'Please enter a number',
       }));

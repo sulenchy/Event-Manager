@@ -22,10 +22,12 @@ export class UserSignup {
     } = req.body;
     // const emailLowerCase = email.toLowerCase();
 
-    let { email, password, username, userType } = req.body;
-    email = email.toLowerCase();
-    username = username.toLowerCase();
-    userType = userType.toLowerCase();
+    let {
+      email, password, username, userType,
+    } = req.body;
+    email = (email.toLowerCase()).trim();
+    username = (username.toLowerCase()).trim();
+    userType = (userType.toLowerCase()).trim();
     /* Checks password length */
     if (password.length < 8) {
       return res.status(400).send({
@@ -58,7 +60,7 @@ export class UserSignup {
         });
       })
       .catch(err => res.status(400).send({
-        status: 'Error signing up',
+        status: `Operation ${err.status} Error signing up`,
         message: 'This username already exist or invalid data supplied',
       }));
   }
