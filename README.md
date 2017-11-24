@@ -1,5 +1,5 @@
 # Event Manager
-[![Build Status](https://travis-ci.org/sulenchy/Event-Manager.svg?branch=develop)](https://travis-ci.org/sulenchy/Event-Manager) [![Coverage Status](https://coveralls.io/repos/github/sulenchy/Event-Manager/badge.svg?branch=develop)](https://coveralls.io/github/sulenchy/Event-Manager?branch=develop)
+[![Build Status](https://travis-ci.org/sulenchy/Event-Manager.svg?branch=develop)](https://travis-ci.org/sulenchy/Event-Manager) [![Coverage Status](https://coveralls.io/repos/github/sulenchy/Event-Manager/badge.svg?branch=develop)](https://coveralls.io/github/sulenchy/Event-Manager?branch=develop) [![Test Coverage](https://api.codeclimate.com/v1/badges/abe3a40a6fe630f7f4c7/test_coverage)](https://codeclimate.com/github/sulenchy/Event-Manager/test_coverage)
 
 # Intorduction
 This is a project divided into three parts:
