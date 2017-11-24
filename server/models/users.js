@@ -11,7 +11,6 @@ export default (sequelize, Sequelize) => {
     email: {
       type: Sequelize.STRING,
       allowNull: false,
-      unique: true,
       validate: {
         isEmail: {
           msg: 'Please enter a valid email address',

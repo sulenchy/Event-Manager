@@ -1,5 +1,5 @@
 // import dependencies
-import { Events, Users } from '../models';
+import { Events } from '../models';
 import { UpdateCenter } from './centers';
 /**
  * This is a AddNewCenter class that allows a client to signup
