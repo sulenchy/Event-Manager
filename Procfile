@@ -1,1 +1,1 @@
-web: npm start
+web: ./node_modules/.bin/babel ./server -d ./dist && mkdir -p ./dist/config && node ./dist/index.js
