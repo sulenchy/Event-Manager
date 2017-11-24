@@ -23,9 +23,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ type: 'application/json' }));
 
-// testing babel
-// test('Production is still working');
-console.log(process.env.SECRET_MESSAGE);
 
 /* Event Manager Endpoint */
 app.get('/api/v1/home', (req, res) => {
