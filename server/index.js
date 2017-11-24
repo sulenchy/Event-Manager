@@ -14,6 +14,7 @@ const app = express(); // Application is Initialised
 app.use(logger('dev'));
 
 dotenv.config();
+
 // Application port
 const port = process.env.PORT || 5005;
 

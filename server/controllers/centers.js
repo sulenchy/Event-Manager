@@ -42,7 +42,7 @@ export class AddNewCenter {
         res.status(201).send({
           status: 'Success',
           message: 'Center added successfully',
-          username: center.name,
+          name: center.name,
           id: center.id,
         });
       })
