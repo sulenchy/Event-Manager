@@ -115,7 +115,7 @@ describe('Signup with "/api/v1/users/signup"', () => {
       .expect(400)
       .then((res) => {
         console.log(res.body.message);
-        assert.equal(res.body.status, 'Error signing up');
+        assert.equal(res.body.status, 'Operation undefined Error signing up');
         assert.deepEqual(res.body.message, 'This username already exist or invalid data supplied');
         assert.deepEqual(res.status, 400);
         done();

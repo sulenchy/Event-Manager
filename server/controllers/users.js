@@ -61,7 +61,7 @@ export class UserSignup {
         });
       })
       .catch(err => res.status(400).send({
-        status: 'Error signing up',
+        status: `Operation ${err.status} Error signing up`,
         message: 'This username already exist or invalid data supplied',
       }));
   }

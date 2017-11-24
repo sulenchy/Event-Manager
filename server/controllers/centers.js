@@ -16,7 +16,7 @@ export class AddNewCenter {
  */
   static addNew(req, res) {
     /** Get the user type */
-    const userType = req.decoded.userType;
+    const { userType } = req.decoded;
     if (userType !== 'admin') {
       console.log('userType: ', userType);
       return res.status(401).send({
