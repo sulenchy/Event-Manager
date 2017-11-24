@@ -43,6 +43,7 @@
     "production": "npm run build && nodemon bin/production --exec babel-node",
     "coverage": "npm test --report --reporter=text-lcov | coveralls",
     "nyc": "nyc report",
+    "heroku-postbuild": "npm run build",
     "lint": "eslint server",
     "migrate":"sequelize db:migrate:undo:all && sequelize db:migrate"
   },
