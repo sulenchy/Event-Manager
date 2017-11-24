@@ -1,7 +1,7 @@
 # Event Manager
 [![Build Status](https://travis-ci.org/sulenchy/Event-Manager.svg?branch=develop)](https://travis-ci.org/sulenchy/Event-Manager) [![Coverage Status](https://coveralls.io/repos/github/sulenchy/Event-Manager/badge.svg?branch=develop)](https://coveralls.io/github/sulenchy/Event-Manager?branch=develop)
 
-# Intorduction
+# Introduction
 This is a project divided into three parts:
 
 1.  The Templates:
