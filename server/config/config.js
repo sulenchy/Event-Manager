@@ -18,9 +18,11 @@ module.exports = {
   production: {
 
     // use_env_variable: 'DATABASE_URL',
-    host: process.env.DATABASE_HOST_PROD,
-    database: process.env.DATABASE_DATABASE_PROD,
-    user: process.env.DATABASE_USER_PROD,
-    password: process.env.DATABASE_PASSWORD_PROD,
+    host: process.env.host,
+    database: process.env.database,
+    user: process.env.user,
+    password: process.env.password,
+    dialect: 'postgres',
+    port: 5432,
   },
 };
