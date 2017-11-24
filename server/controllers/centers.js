@@ -42,7 +42,7 @@ export class AddNewCenter {
         res.status(201).send({
           status: 'Success',
           message: 'Center added successfully',
-          username: center.name,
+          name: center.name,
           id: center.id,
         });
       })
@@ -182,7 +182,7 @@ export class UpdateCenter {
         /* Updates the event and returns the updated event */
         return center
           .update({
-            available: center.available === true ? false : true,
+            available: center.available !== true,
           })
           .then(updatedCenter => res.status(200).send({
             status: 'Success',
