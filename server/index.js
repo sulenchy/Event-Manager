@@ -2,14 +2,12 @@
 import express from 'express';
 import logger from 'morgan';
 import dotenv from 'dotenv';
-import bodyParser from 'body-parser';
-import { UserSignup, UserSignin } from './controllers/users';
-import { AddNewCenter, GetCenterList, GetCenterWithEvent, UpdateCenter } from './controllers/centers';
-import { AddNewEvent, UpdateEvent, DeleteEvent } from './controllers/events';
-import auth from './auth/auth';
+
+import routes from './routes/routes';
 
 const app = express(); // Application is Initialised
 
+app.use(routes);
 // log request to the console
 app.use(logger('dev'));
 
@@ -18,44 +16,7 @@ dotenv.config();
 // Application port
 const port = process.env.PORT || 5005;
 
-// set up body-parser to parse incoming request data
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json({ type: 'application/json' }));
 
-
-/* Event Manager Endpoint */
-app.get('/api/v1/home', (req, res) => {
-  res.status(200).send({
-    status: 'Success',
-    message: 'Welcome to Andevents API Endpoint!',
-  });
-});
-
-/* Signin and Signup API Endpoint */
-app.post('/api/v1/users/signup', UserSignup.signUp);
-app.post('/api/v1/users/signin', UserSignin.signIn);
-app.get('/api/v1/centers', GetCenterList.listAll);
-
-// authenticate the secure endpoint
-app.use(auth.verifyUser);
-
-/**
- * Centers endpoints requiring authentication before getting access
- *to different points of the application
- */
-
-app.post('/api/v1/centers', AddNewCenter.addNew);
-app.get('/api/v1/centers/:id', GetCenterWithEvent.getCenter);
-app.put('/api/v1/centers/:id', UpdateCenter.updateCenter);
-
-/**
- * Events endpoints requiring authentication before getting access
- *to different points of the application
- */
-app.post('/api/v1/events', AddNewEvent.addNew);
-app.put('/api/v1/events/:id', UpdateEvent.updateEvent);
-app.delete('/api/v1/events/:id', DeleteEvent.deleteEvent);
 // logs transaction to the terminal
 logger('dev');
 
