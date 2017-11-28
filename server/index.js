@@ -3,9 +3,15 @@ import express from 'express';
 import logger from 'morgan';
 import dotenv from 'dotenv';
 import path from 'path';
+import webpack from 'webpack';
+import webpackMiddleware from 'webpack-dev-middleware';
+
+import webpackConfig from '../webpack.config.dev';
 import routes from './routes/routes';
 
 const app = express(); // Application is Initialised
+
+app.use(webpackMiddleware(webpack(webpackConfig)));
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, './index.html'));
