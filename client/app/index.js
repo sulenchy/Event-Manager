@@ -1,1 +1,4 @@
-console.log('Welcome to andevents');
+import react from 'react';
+import { render } from 'react-dom';
+
+import App from './Components/App';

@@ -2,10 +2,14 @@
 import express from 'express';
 import logger from 'morgan';
 import dotenv from 'dotenv';
-
+import path from 'path';
 import routes from './routes/routes';
 
 const app = express(); // Application is Initialised
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, './index.html'));
+});
 
 app.use(routes);
 // log request to the console
