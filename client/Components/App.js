@@ -5,10 +5,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <NavigationBar />
-        {/* <FlashMessagesList />
-        {this.props.children} */}
+        <h1>Welcome to ande</h1>
       </div>
+      
     );
   }
 }
