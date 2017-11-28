@@ -10,6 +10,7 @@ const config = {
     filename: './bundle.js',
     publicPath: '/app/',
   },
+  // chrome debugging
   devtool: '#source-map',
   module: {
     loaders: [
