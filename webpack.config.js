@@ -10,6 +10,8 @@ const config = {
     filename: './bundle.js',
     publicPath: '/app/',
   },
+  // chrome debugging
+  devtool: '#source-map',
   module: {
     loaders: [
       {
@@ -19,6 +21,23 @@ const config = {
         query: {
           presets: ['react', 'es2015', 'stage-2'],
         },
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {},
+          },
+        ],
       },
     ],
   },
