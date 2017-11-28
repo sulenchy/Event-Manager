@@ -1,8 +1,8 @@
 // importing react dependencies
 import React from 'react';
 import ReactDom from 'react-dom';
+import { Router } from 'react-router';
 
-// importing components
-import App from './components/App';
+import routes from './routes';
 
-ReactDom.render(<App />, document.getElementById('app'));
+ReactDom.render(<Router history={browserHistory} routers={routes} />, document.getElementById('app'));
