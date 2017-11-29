@@ -17,23 +17,22 @@ export class UserSignup {
  * @memberof UserSignup
  */
   static signUp(req, res) {
-    const {
-      retypePassword,
-    } = req.body.user;
-    // const emailLowerCase = email.toLowerCase();
+    // const {
+    //   retypePassword
+    // } = req.body.user.retypePassword;
 
     let {
-      email, password, username, userType,
-    } = req.body.user;
+      email, password, username, userType, retypePassword,
+    } = req.body;
 
     
 
-    console.log(req.body.user.email);
+    console.log(req.body);
 
-    email = req.body.user.email.toString().toLowerCase().trim();
-    username = req.body.user.username.toString().toLowerCase().trim();
-    userType = req.body.user.userType === undefined ? 'client' : req.body.user.userType.toString().toLowerCase().trim();
-
+    email = req.body.email.toString().toLowerCase().trim();
+    username = req.body.username.toString().toLowerCase().trim();
+    userType = req.body.userType === undefined ? 'client' : req.body.user.userType.toString().toLowerCase().trim();
+    retypePassword = req.body.retypePassword;
     console.log(userType);
     /* Checks password length */
     if (password.length < 8) {
