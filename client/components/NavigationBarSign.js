@@ -13,18 +13,6 @@ export default () => (
                     <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#about">About us</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="#trending-centers">Trending Centers</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="#recent-events">Recent Events</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="#testimonials">Testimonials</a>
-                </li>
-                <li className="nav-item">
                     <a className="nav-link" href="#">Help</a>
                 </li>
                 <li className="nav-item">
