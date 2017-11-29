@@ -31,7 +31,7 @@ export class UserSignup {
 
     email = req.body.email.toString().toLowerCase().trim();
     username = req.body.username.toString().toLowerCase().trim();
-    userType = req.body.userType === undefined ? 'client' : req.body.user.userType.toString().toLowerCase().trim();
+    userType = req.body.userType === undefined ? 'client' : req.body.userType.toString().toLowerCase().trim();
     retypePassword = req.body.retypePassword;
     console.log(userType);
     /* Checks password length */

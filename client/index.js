@@ -8,8 +8,6 @@ import { createStore, applyMiddleware } from 'redux';
 
 import App from './app';
 
-// console.log(Routes);
-
 const store = createStore(
     (state = {}) => state,
     applyMiddleware(thunk)

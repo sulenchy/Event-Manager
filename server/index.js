@@ -11,6 +11,7 @@ import routes from './routes/routes';
 
 const app = express();
 
+
 const compiler = webpack(webpackConfig);
 
 app.use(webpackMiddleware(compiler, {
@@ -19,11 +20,13 @@ app.use(webpackMiddleware(compiler, {
   noInfo: false,
 }));
 
+app.use(routes);
+
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
-app.use(routes);
+
 // log request to the console
 app.use(logger('dev'));
 

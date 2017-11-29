@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { browserHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 
 import NavigationBarSign from './NavigationBarSign';
@@ -25,9 +26,11 @@ class SignupForm extends React.Component {
 
   onSubmit(e){
     e.preventDefault();
-    // console.log(this.state);
-    // axios.post('/api/v1/users/signup', { user:this.state })
-    this.props.userSignupRequest(this.state);
+    this.props.userSignupRequest(this.state).then(
+      () => {
+        browserHistory.push('/');
+      }
+    );
   }
   
   render() {
