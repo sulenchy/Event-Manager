@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import axios from 'axios';
+
 import NavigationBarSign from './NavigationBarSign';
 import Footer from './Footer';
 
@@ -23,7 +25,8 @@ class SignupPage extends React.Component {
 
   onSubmit(e){
     e.preventDefault();
-    console.log(this.state);
+    // console.log(this.state);
+    axios.post('/api/v1/users/signup', { user:this.state })
   }
   
   render() {
