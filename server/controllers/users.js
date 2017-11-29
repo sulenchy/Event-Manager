@@ -17,18 +17,23 @@ export class UserSignup {
  * @memberof UserSignup
  */
   static signUp(req, res) {
-    const {
-      retypePassword,
-    } = req.body;
-    // const emailLowerCase = email.toLowerCase();
+    // const {
+    //   retypePassword
+    // } = req.body.user.retypePassword;
 
     let {
-      email, password, username, userType,
+      email, password, username, userType, retypePassword,
     } = req.body;
-    email = (email.toLowerCase()).trim();
-    username = (username.toLowerCase()).trim();
-    userType = (userType.toLowerCase()).trim();
 
+    
+
+    console.log(req.body);
+
+    email = req.body.email.toString().toLowerCase().trim();
+    username = req.body.username.toString().toLowerCase().trim();
+    userType = req.body.userType === undefined ? 'client' : req.body.user.userType.toString().toLowerCase().trim();
+    retypePassword = req.body.retypePassword;
+    console.log(userType);
     /* Checks password length */
     if (password.length < 8) {
       return res.status(400).send({
@@ -42,6 +47,9 @@ export class UserSignup {
         message: 'Password supplied deos not tally with retype password',
       });
     }
+
+    
+
     /* encrypt password and stores in the database
     along with some user information */
     password = bcrypt.hashSync(password, 10);
