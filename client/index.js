@@ -1,21 +1,33 @@
 // importing react dependencies
 import React from 'react';
 import ReactDom from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
 
-import App from './app';
-
+import Main from './Main';
+import rootReducer from './reducers';
+import Greetings from './components/Greetings';
+import SignupPage from './components/SignupPage';
+import SigninPage from './components/SigninPage';
 // console.log(Routes);
 
 const store = createStore(
-    (state = {}) => state,
+    rootReducer,
     applyMiddleware(thunk)
 );
 
+export default store;
+
 ReactDom.render(
     <Provider store={store}>
-        <BrowserRouter><App /></BrowserRouter>
+        <Router history={browserHistory}>
+            <Route path="/" component={Main}>
+                <IndexRoute component={Greetings}></IndexRoute>  
+                <Route path="/signup" component={SignupPage}></Route>
+                <Route path="/signin" component={SigninPage}></Route>
+
+            </Route>                         
+        </Router>
     </Provider>, document.getElementById('app'));

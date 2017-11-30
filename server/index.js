@@ -19,11 +19,9 @@ app.use(webpackMiddleware(compiler, {
   noInfo: false,
 }));
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/index.html'));
-});
-
 app.use(routes);
+
+
 // log request to the console
 app.use(logger('dev'));
 

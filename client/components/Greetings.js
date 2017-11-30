@@ -1,21 +1,38 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import NavigationBar from './NavigationBar';
 import Footer from './Footer';
 
 class Greetings extends React.Component {
   render() {
+
+
+    let homeButton = <a className="btn btn-primary btn-lg" role="button"
+    onClick={() => {
+        this.props.signInUser();
+    }}
+    >Read more</a>;
+    if(this.props.users.length > 0) {
+        homeButton = <a className="btn btn-primary btn-lg" role="button"
+        >Hello NoSQL</a>
+    }
+
+    let authUser = this.props.authUser;
+    let authUserName;
+    if(authUser) {
+        authUserName = authUser.user.username;
+    }
+
     return (
       <div>
-        <NavigationBar />
+        <NavigationBar {...this.props} />
         <div className="#">
           <main className="container">
             <div className="jumbotron mt-5" id="about">
-              <h1 className="h1-responsive">Hello, welcome to Andevents</h1>
+              <h1 className="h1-responsive">Hello {authUserName}, welcome to Andevents</h1>
               <p className="lead">Andevents is the best event manager you can find anywhere across Nigeria. We have locations all over the country. We offer the best price you can think of. We manage everything about your event…</p>
               <hr className="my-2"></hr>
               <p>With us all events are boom ! !! !!!.</p>
-              <a className="btn btn-primary btn-lg" role="button">Read more</a>
+              {homeButton}
             </div>
             <div className="carousel slide carousel-fade text-center" id="trending-centers" data-ride="carousel">
               <h1 className="section-heading h1 pt-4 light-blue-text">Trending Centers</h1>
@@ -78,17 +95,17 @@ class Greetings extends React.Component {
               
               <div className="carousel-inner" role="listbox">
                   <div className="carousel-item active">
-                      <video className="video-fluid" autoplay loop>
+                      <video className="video-fluid" autoPlay loop>
                           <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4" />
                       </video>
                   </div>
                   <div className="carousel-item">
-                      <video className="video-fluid" autoplay loop>
+                      <video className="video-fluid" autoPlay loop>
                           <source src="https://mdbootstrap.com/img/video/forest.mp4" type="video/mp4" />
                       </video>
                   </div>
                   <div className="carousel-item">
-                      <video className="video-fluid" autoplay loop>
+                      <video className="video-fluid" autoPlay loop>
                           <source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4" />
                       </video>
                   </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 export default () => (
     <footer className="page-footer indigo center-on-small-only pt-0">
