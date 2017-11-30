@@ -71,15 +71,7 @@ export default class SigninPage extends React.Component {
                             <div className="text-center mb-3">
                             <a className="btn btn-blue text-white btn-block btn-rounded z-depth-1a" onClick={this.onSubmit}>Sign in</a>
                             </div>
-                            <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Sign in with:</p>
-                            <div className="row my-3 d-flex justify-content-center">
-                            {/*Facebook*/}
-                            <button type="button" className="btn btn-indigo text-white btn-rounded mr-md-3 z-depth-1a"><i className="fa fa-facebook white-text text-center" /></button>
-                            {/*Twitter*/}
-                            <button type="button" className="btn btn-blue text-white btn-rounded mr-md-3 z-depth-1a"><i className="fa fa-twitter white-text" /></button>
-                            {/*Google +*/}
-                            <button type="button" className="btn btn-red text-white btn-rounded z-depth-1a"><i className="fa fa-google-plus white-text" /></button>
-                            </div>
+ 
                         </div>
                         {/*Footer*/}
                         <div className="modal-footer mx-5 pt-3 mb-1">
