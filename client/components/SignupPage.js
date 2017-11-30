@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux';
 
 import Footer from './Footer';
-import NavigationBarSign from './NavigationBarSign';
+import NavigationBar from './NavigationBar';
 
 export default class SignupPage extends React.Component {
   constructor(props){
@@ -27,13 +27,13 @@ export default class SignupPage extends React.Component {
 
   onSubmit(e){
     e.preventDefault();
-    this.props.signUpUser(this.state).catch(error => {
-
-      this.setState({
-        error: error.data.message
-      });
-    }).then(() => {
-      this.props.router.push('/');
+    this.props.signUpUser(this.state)
+      .then(() => {
+        this.props.router.push('/signin');
+      }).catch(error => {
+        this.setState({
+          error: error.data.message
+        });
     });
 
   }
@@ -51,7 +51,7 @@ export default class SignupPage extends React.Component {
     return (
       <div>
         <div>
-        <NavigationBarSign />
+        <NavigationBar {...this.props}/>
         <div className="mt-5">
         <div className="container">
           <div className="row">

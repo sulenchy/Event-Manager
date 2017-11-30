@@ -128,6 +128,7 @@ export class UserSignin {
             status: 'Success',
             message: 'Congratulation, you successfully signed-in into andevents',
             data: token,
+            user
           });
         }
         return res.status(400).send({

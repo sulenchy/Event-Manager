@@ -18,12 +18,15 @@ const store = createStore(
     applyMiddleware(thunk)
 );
 
+export default store;
+
 ReactDom.render(
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={Main}>
                 <IndexRoute component={Greetings}></IndexRoute>  
                 <Route path="/signup" component={SignupPage}></Route>
+                <Route path="/signin" component={SigninPage}></Route>
 
             </Route>                         
         </Router>

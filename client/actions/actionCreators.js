@@ -1,16 +1,35 @@
 import axios from 'axios';
 
-export function signInUser() {
-    return (dispatch, getState) => {
+export function signInUser(userData) {
+    return (dispatch) => {
+        return axios.post('/api/v1/users/signin', userData).then(response => {
+            let user = response.data.user;
+            let token = response.data.data;
+            localStorage.setItem('authUser', JSON.stringify({ user, token }));
 
-        dispatch({
-            type: '',
-            payload: { id: 1, name: 'sulenchy' }
+            dispatch({
+                type: 'SIGN_IN_USER',
+                payload: { user, token }
+            });
+
+            return Promise.resolve(response);
+        }).catch(error => {
+            return Promise.reject(error.response);
         });
     }
 }
 
-export function signUpUser(useSIGN_IN_USERrData) {
+export function signOut() {
+    return (dispatch) => {
+        localStorage.removeItem('authUser');
+
+        dispatch({
+            type: 'SIGN_OUT_USER'
+        });
+    }
+}
+
+export function signUpUser(userData) {
     return (dispatch) => {
         return axios.post('/api/v1/users/signup', userData).then((data) => {
             return Promise.resolve(data);
@@ -19,7 +38,3 @@ export function signUpUser(useSIGN_IN_USERrData) {
         });
     }
 }
-
-
-
-
