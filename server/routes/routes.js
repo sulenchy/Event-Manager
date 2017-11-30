@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-
+import path from 'path';
 import auth from '../auth/auth';
 import { UserSignup, UserSignin } from '../controllers/users';
 import { AddNewCenter, GetCenterList, GetCenterWithEvent, UpdateCenter } from '../controllers/centers';
@@ -26,7 +26,9 @@ router.get('/api/v1/home', (req, res) => {
 router.post('/api/v1/users/signup', UserSignup.signUp);
 router.post('/api/v1/users/signin', UserSignin.signIn);
 router.get('/api/v1/centers', GetCenterList.listAll);
-
+router.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/../../client/index.html'));
+});
 // authenticate the secure endpoint
 router.use(auth.verifyUser);
 

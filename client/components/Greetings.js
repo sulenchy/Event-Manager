@@ -13,7 +13,7 @@ class Greetings extends React.Component {
     >Read more</a>;
     if(this.props.users.length > 0) {
         homeButton = <a className="btn btn-primary btn-lg" role="button"
-        >Hello frantz</a>
+        >Hello NoSQL</a>
     }
 
     let authUser = this.props.authUser;
