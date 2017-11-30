@@ -1,5 +1,6 @@
+/coverage.data
+/coverage/
 node_modules/
 .env
 dist/
-.nyc_output
-coverage
+.nyc_output/
