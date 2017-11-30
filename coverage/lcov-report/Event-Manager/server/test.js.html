@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">92.74% </span>
+        <span class="strong">92.31% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>115/124</span>
+        <span class='fraction'>108/117</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>34/43</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">92.74% </span>
+        <span class="strong">92.31% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>115/124</span>
+        <span class='fraction'>108/117</span>
       </div>
     </div>
   </div>
@@ -347,18 +347,10 @@
 302
 303
 304
-305
-306
-307
-308
-309
-310
-311
-312</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+305</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -474,7 +466,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -520,24 +511,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -575,7 +564,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -634,8 +622,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -669,7 +655,6 @@
 import request from 'supertest';
 import app from './index';
 import { Users, Events, Centers } from './models';
-// const assert = chai.assert;
 &nbsp;
 Users.destroy({
   cascade: true,
@@ -781,7 +766,6 @@ describe('Signup with "/api/v1/users/signup"', () =&gt; {
       })
       .expect(400)
       .then((res) =&gt; {
-        console.log(res.body.message);
         assert.equal(res.body.status, 'Operation undefined Error signing up');
         assert.deepEqual(res.body.message, 'This username already exist or invalid data supplied');
         assert.deepEqual(res.status, 400);
@@ -831,7 +815,7 @@ describe('Signin with "/api/v1/users/signin"', () =&gt; {
       })
       .expect(400)
       .then((res) =&gt; {
-        console.log(res.body);
+        // console.log(res.body);
         assert.deepEqual(res.body.status, 'Login Error');
         assert.deepEqual(res.body.message, 'Incorrect login details supplied');
         assert.deepEqual(res.status, 400);
@@ -847,12 +831,10 @@ describe('Signin with "/api/v1/users/signin"', () =&gt; {
       })
       .expect(200)
       .then((res) =&gt; {
-        console.log(res.body);
         assert.deepEqual(res.body.status, 'Success');
         assert.deepEqual(res.body.message, 'Congratulation, you successfully signed-in into andevents');
         assert.deepEqual(res.status, 200);
         token = res.body.data;
-        console.log(res.body);
         done();
       });
   });
@@ -886,7 +868,6 @@ describe('GET, POST and PUT Centers', () =&gt; {
       })
       .expect(403)
       .then((res) =&gt; {
-        console.log(res.body, res.status);
         assert.deepEqual(res.body.status, 'Fail');
         assert.deepEqual(res.body.message, 'Please send your token along with your request');
         assert.deepEqual(res.status, 403);
@@ -945,12 +926,10 @@ describe('GET, POST and PUT Centers', () =&gt; {
       })
       .expect(200)
       .then((res) =&gt; {
-        console.log(res.body);
         assert.deepEqual(res.body.status, 'Success');
         assert.deepEqual(res.body.message, 'Congratulation, you successfully signed-in into andevents');
         assert.deepEqual(res.status, 200);
         token = res.body.data;
-        console.log('the token', token);
         done();
       });
   });
@@ -982,7 +961,7 @@ describe('GET, POST and PUT Centers', () =&gt; {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 30 2017 11:30:10 GMT+0100 (W. Central Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 30 2017 14:24:52 GMT+0100 (W. Central Africa Standard Time)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>

@@ -18,7 +18,6 @@ export class AddNewCenter {
     /** Get the user type */
     const { userType } = req.decoded;
     if (userType !== 'admin') {
-      console.log('userType: ', userType);
       return res.status(401).send({
         status: 'Authority Error',
         message: 'Sorry, you do not have the required previledge to the resource',

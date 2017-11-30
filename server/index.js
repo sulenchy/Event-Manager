@@ -2,7 +2,6 @@
 import express from 'express';
 import logger from 'morgan';
 import dotenv from 'dotenv';
-import path from 'path';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 
@@ -34,9 +33,6 @@ const port = process.env.PORT || 5005;
 // logs transaction to the terminal
 logger('dev');
 
-// logs a string message about what port we are using to the terminal
-console.log('we are live on port', port);
 
 // starts server
 export default app.listen(port);
-// app.listen(3000, () => console.log('Running on localhost:3000'));

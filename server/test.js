@@ -2,7 +2,6 @@ import { assert } from 'chai';
 import request from 'supertest';
 import app from './index';
 import { Users, Events, Centers } from './models';
-// const assert = chai.assert;
 
 Users.destroy({
   cascade: true,
@@ -114,7 +113,6 @@ describe('Signup with "/api/v1/users/signup"', () => {
       })
       .expect(400)
       .then((res) => {
-        console.log(res.body.message);
         assert.equal(res.body.status, 'Operation undefined Error signing up');
         assert.deepEqual(res.body.message, 'This username already exist or invalid data supplied');
         assert.deepEqual(res.status, 400);
@@ -164,7 +162,7 @@ describe('Signin with "/api/v1/users/signin"', () => {
       })
       .expect(400)
       .then((res) => {
-        console.log(res.body);
+        // console.log(res.body);
         assert.deepEqual(res.body.status, 'Login Error');
         assert.deepEqual(res.body.message, 'Incorrect login details supplied');
         assert.deepEqual(res.status, 400);
@@ -180,12 +178,10 @@ describe('Signin with "/api/v1/users/signin"', () => {
       })
       .expect(200)
       .then((res) => {
-        console.log(res.body);
         assert.deepEqual(res.body.status, 'Success');
         assert.deepEqual(res.body.message, 'Congratulation, you successfully signed-in into andevents');
         assert.deepEqual(res.status, 200);
         token = res.body.data;
-        console.log(res.body);
         done();
       });
   });
@@ -219,7 +215,6 @@ describe('GET, POST and PUT Centers', () => {
       })
       .expect(403)
       .then((res) => {
-        console.log(res.body, res.status);
         assert.deepEqual(res.body.status, 'Fail');
         assert.deepEqual(res.body.message, 'Please send your token along with your request');
         assert.deepEqual(res.status, 403);
@@ -278,12 +273,10 @@ describe('GET, POST and PUT Centers', () => {
       })
       .expect(200)
       .then((res) => {
-        console.log(res.body);
         assert.deepEqual(res.body.status, 'Success');
         assert.deepEqual(res.body.message, 'Congratulation, you successfully signed-in into andevents');
         assert.deepEqual(res.status, 200);
         token = res.body.data;
-        console.log('the token', token);
         done();
       });
   });
