@@ -27,7 +27,6 @@ ReactDom.render(
                 <IndexRoute component={Greetings}></IndexRoute>  
                 <Route path="/signup" component={SignupPage}></Route>
                 <Route path="/signin" component={SigninPage}></Route>
-
             </Route>                         
         </Router>
     </Provider>, document.getElementById('app'));
