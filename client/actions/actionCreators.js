@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function signInUser(userData) {
+export const signInUser = (userData) => {
     return (dispatch) => {
         return axios.post('/api/v1/users/signin', userData).then(response => {
             let user = response.data.user;
@@ -19,17 +19,16 @@ export function signInUser(userData) {
     }
 }
 
-export function signOut() {
+export const signOut = () => {
     return (dispatch) => {
         localStorage.removeItem('authUser');
-
         dispatch({
             type: 'SIGN_OUT_USER'
         });
     }
 }
 
-export function signUpUser(userData) {
+export const signUpUser = (userData) => {
     return (dispatch) => {
         return axios.post('/api/v1/users/signup', userData).then((data) => {
             return Promise.resolve(data);

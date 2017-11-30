@@ -162,7 +162,6 @@ describe('Signin with "/api/v1/users/signin"', () => {
       })
       .expect(400)
       .then((res) => {
-        // console.log(res.body);
         assert.deepEqual(res.body.status, 'Login Error');
         assert.deepEqual(res.body.message, 'Incorrect login details supplied');
         assert.deepEqual(res.status, 400);

@@ -89,16 +89,7 @@ export default class SignupPage extends React.Component {
                     <div className="text-center mb-3">
                         <button type="submit" className="btn btn-blue text-white btn-block btn-rounded z-depth-1a">Sign up</button>
                     </div>
-                    <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Sign up with:</p>
-          
-                    <div className="row my-3 d-flex justify-content-center">
-                        
-                        <button type="button" className="btn btn-indigo text-white btn-rounded mr-md-3 z-depth-1a"><i className="fa fa-facebook white-text text-center"></i></button>
-                        
-                        <button type="button" className="btn btn-blue text-white btn-rounded mr-md-3 z-depth-1a"><i className="fa fa-twitter white-text"></i></button>
-                        
-                        <button type="button" className="btn btn-red text-white btn-rounded z-depth-1a"><i className="fa fa-google-plus white-text"></i></button>
-                    </div>
+                    
                   </form>
                 </div>
         
