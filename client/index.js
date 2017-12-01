@@ -11,6 +11,7 @@ import rootReducer from './reducers';
 import Greetings from './components/Greetings';
 import SignupPage from './components/SignupPage';
 import SigninPage from './components/SigninPage';
+import AddNewCenter from './components/AddNewCenter';
 // console.log(Routes);
 
 const store = createStore(
@@ -27,6 +28,7 @@ ReactDom.render(
                 <IndexRoute component={Greetings}></IndexRoute>  
                 <Route path="/signup" component={SignupPage}></Route>
                 <Route path="/signin" component={SigninPage}></Route>
+                <Route path="/addnewuser" component={AddNewCenter}></Route>
             </Route>                         
         </Router>
     </Provider>, document.getElementById('app'));

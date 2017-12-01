@@ -29,16 +29,9 @@ const mapStateToProps = (state) => {
     return state;
 }
 
-// function mapStateToProps(state) {
-//     return state;
-// }
-
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(actionCreators, dispatch);
 }
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators(actionCreators, dispatch);
-// }
 
 const Main = connect(mapStateToProps, mapDispatchToProps)(App);
 
