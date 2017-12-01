@@ -65,3 +65,20 @@ export const addNewCenter = (centerData) => {
         });
     }
 }
+
+
+/**
+ * Adds new event to the database
+ * @param {*} eventData 
+ * @returns promise
+ */
+
+export const addNewEvent = (eventData) => {
+    return (dispatch) => {        
+        return axios.post('/api/v1/centers', eventData).then((data) => {
+            return Promise.resolve(data);
+        }).catch((error) => {
+            return Promise.reject(error.response);
+        });
+    }
+}

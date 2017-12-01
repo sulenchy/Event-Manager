@@ -13,6 +13,7 @@ import Greetings from './components/Greetings';
 import SignupPage from './components/SignupPage';
 import SigninPage from './components/SigninPage';
 import AddNewCenter from './components/AddNewCenter';
+import AddNewEvent from './components/AddNewEvent';
 // console.log(Routes);
 
 const store = createStore(
@@ -49,6 +50,7 @@ ReactDom.render(
                 <Route path="/signup" component={SignupPage}></Route>
                 <Route path="/signin" component={SigninPage}></Route>
                 <Route path="/addnewcenter" component={AddNewCenter}></Route>
+                <Route path="/addnewevent" component={AddNewEvent}></Route>
             </Route>
         </Router>
     </Provider>, document.getElementById('app'));
