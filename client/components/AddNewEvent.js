@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
+import { Calendar } from 'react-calendar-component';
 import { connect } from 'react-redux';
 import Footer from './Footer';
 import NavigationBar from './NavigationBar';
@@ -16,7 +17,7 @@ export default class AddNewCenter extends React.Component {
       estimated_attendees: '',
       event_date: '',
       lga: '',
-      centerId: '',
+      centerId: 0,
       centers: [],
       lgas: ['Agege', 'Amuwo', 'Bariga', 'Ikorodu'],
       error: null
@@ -31,7 +32,9 @@ export default class AddNewCenter extends React.Component {
 
   onSubmit(e){
     e.preventDefault();
-    this.props.addNewCenter(this.state)
+    let data = this.state;
+    data.userId = this.props.authUser.user.id;
+    this.props.addNewEvent(data)
       .then(() => {
         this.props.router.push('/');
       }).catch(error => {
@@ -39,7 +42,6 @@ export default class AddNewCenter extends React.Component {
           error: error.data.message
         });
     });
-
   }
 
   /**
@@ -50,7 +52,7 @@ export default class AddNewCenter extends React.Component {
     const userString =localStorage.getItem('authUser');
     const userData = JSON.parse(userString);
     // protecting the routes
-    if(!userString || userData.user.userType === 'client') {
+    if(!userString || userData.user.userType === 'admin') {
         this.props.router.push('/');
     }
 
@@ -107,32 +109,32 @@ export default class AddNewCenter extends React.Component {
                     </div>
                     <div className="md-form">
                         <input type="text" id="Form-title" onChange={this.onChange} className="form-control" value= {this.state.title}  name="title"></input>
-                        <label htmlFor="Form-username">EnterEvent title</label>
+                        <label htmlFor="Form-username">Enter Event title</label>
                     </div>
                     <div className="md-form">
-                        <input type="text" id="Form-decription" onChange={this.onChange} className="form-control" value= {this.state.decription} name="decription"></input>
-                        <label htmlFor="Form-address">Enter Event decription</label>
+                        <input type="text" id="Form-description" onChange={this.onChange} className="form-control" value= {this.state.description} name="description"></input>
+                        <label htmlFor="Form-description">Enter Event description</label>
                     </div>
                     <div className="md-form">
-                        <input type="text" id="Form-event-type" onChange={this.onChange} className="form-control" value= {this.state.event_type} name="event-type"></input>
-                        <label htmlFor="Form-cost">Enter Event type</label>
+                        <input type="text" id="Form-event-type" onChange={this.onChange} className="form-control" value= {this.state.event_type} name="event_type"></input>
+                        <label htmlFor="Form-event-type">Enter Event type</label>
                     </div>
                     <div className="md-form">
-                        <input type="text" id="Form-estimated-attendees" onChange={this.onChange} className="form-control" value= {this.state.estimated_attendees} name="estimated-attendees"></input>
-                        <label htmlFor="Form-facilities">Enter estimated attendees</label>
+                        <input type="text" id="Form-estimated-attendees" onChange={this.onChange} className="form-control" value= {this.state.estimated_attendees} name="estimated_attendees"></input>
+                        <label htmlFor="Form-estimated-attendees">Enter estimated attendees</label>
                     </div>
                     <div className="md-form">
-                        <input type="text" id="Form-event-date" onChange={this.onChange} className="form-control" value= {this.state.event_date} name="event-date"></input>
-                        <label htmlFor="Form-image">Enter Event date (yy-mm-dd)</label>
+                        <input type="text" id="Form-event-date" onChange={this.onChange} className="form-control" value= {this.state.event_date} name="event_date"></input>
+                        <label htmlFor="Form-event-date">Enter Event date (yyyy-mm-dd)</label>
                     </div>
                     <div className="md-form">
-                        <select className="mdb-select form-control" defaultValue="">
+                    <select className="mdb-select form-control" name="lga" onChange={this.onChange} defaultValue="" value={this.state.lga}>
                             <option value="" disabled>Select LGA</option>
                             {lgas}
                         </select>
                     </div>
                     <div className="md-form">
-                        <select className="mdb-select form-control" defaultValue="">
+                        <select className="mdb-select form-control" name="centerId" onChange={this.onChange} defaultValue="" value={this.state.centerId}>
                             <option value="" disabled>Select Center</option>
                             {centers}
                         </select>
