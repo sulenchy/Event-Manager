@@ -1,8 +1,8 @@
 import React from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router'
 import { connect } from 'react-redux';
-
 import Footer from './Footer';
 import NavigationBar from './NavigationBar';
 
@@ -17,6 +17,8 @@ export default class AddNewCenter extends React.Component {
       event_date: '',
       lga: '',
       centerId: '',
+      centers: [],
+      lgas: ['Agege', 'Amuwo', 'Bariga', 'Ikorodu'],
       error: null
     }
     this.onChange = this.onChange.bind(this);
@@ -51,6 +53,15 @@ export default class AddNewCenter extends React.Component {
     if(!userString || userData.user.userType === 'client') {
         this.props.router.push('/');
     }
+
+    axios.get('/api/v1/centers').then((data) => {
+        console.log(data);
+        this.setState({
+            centers: data.data.data
+        });
+    }).catch((error) => {
+       
+    });
 }
 
   render() { 
@@ -58,6 +69,25 @@ export default class AddNewCenter extends React.Component {
     if(this.state.error) {
       errorMessage = <small className="text-danger">{this.state.error}</small>;
     }
+
+    let centers;
+
+    centers = this.state.centers.map((center,i) => {
+        return (
+            
+         <option value={center.id} key={i}>{center.name}</option>
+        );
+    });
+
+    let lgas;
+
+    lgas = this.state.lgas.map((lga, i) => {
+        return (
+            
+         <option value={lga} key={i}>{lga}</option>
+        );
+     });
+
     return (
       <div>
         <div>
@@ -96,35 +126,17 @@ export default class AddNewCenter extends React.Component {
                         <label htmlFor="Form-image">Enter Event date (yy-mm-dd)</label>
                     </div>
                     <div className="md-form">
-                        <div className="btn-group">
-                            <button type="button" className="btn btn-gray col-md-9">select Event LGA</button>
-                            <button type="button" className="btn btn-indigo-skin col-md-3 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span className="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <div className="dropdown-menu">
-                            <a className="dropdown-item" href="#">Agege</a>
-                            <a className="dropdown-item" href="#">Amowo</a>
-                            <a className="dropdown-item" href="#">Festac</a>
-                            <a className="dropdown-item" href="#">Ikorodu</a>
-                            <a className="dropdown-item" href="#">Surulere</a>
-                            </div>
-                        </div>
+                        <select className="mdb-select form-control" defaultValue="">
+                            <option value="" disabled>Select LGA</option>
+                            {lgas}
+                        </select>
                     </div>
                     <div className="md-form">
-                        <div className="btn-group">
-                            <button type="button" className="btn btn-gray col-md-9">select Center</button>
-                            <button type="button" className="btn btn-indigo-skin col-md-3 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span className="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <div className="dropdown-menu">
-                            <a className="dropdown-item" href="#">Action</a>
-                            <a className="dropdown-item" href="#">Another action</a>
-                            <a className="dropdown-item" href="#">Something else here</a>
-                            <div className="dropdown-divider" />
-                            <a className="dropdown-item" href="#">Separated link</a>
-                            </div>
-                        </div>
-                    </div>
+                        <select className="mdb-select form-control" defaultValue="">
+                            <option value="" disabled>Select Center</option>
+                            {centers}
+                        </select>
+                    </div>                    
                     <div className="text-center mb-3">
                         <button type="submit" className="btn btn-blue text-white btn-block btn-rounded z-depth-1a">Add</button>
                     </div>
