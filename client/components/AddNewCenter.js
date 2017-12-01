@@ -41,15 +41,15 @@ export default class AddNewCenter extends React.Component {
 
   }
 
+  /**
+   * componentWillMount runs before render()
+   */
   componentWillMount() {
-    const userString = localStorage.getItem('authUser');
-
-    if(!userString) {
-        // const userData = JSON.parse(userString);
-        // store.dispatch({
-        //     type: 'SIGN_IN_USER',
-        //     payload: userData
-        // });
+    // get authenticated user data from localstorage
+    const userString =localStorage.getItem('authUser');
+    const userData = JSON.parse(userString);
+    // protecting the routes
+    if(!userString || userData.user.userType === 'client') {
         this.props.router.push('/');
     }
 }
