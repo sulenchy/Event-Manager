@@ -71,7 +71,7 @@ export const addNewCenter = (centerData) => {
  * @returns promise
  */
 
-export const getAllCenter = () => {
+export const getAllCenters = () => {
     return (dispatch) => {
         return axios.get('/api/v1/centers').then((data) => {
             return Promise.resolve(data);

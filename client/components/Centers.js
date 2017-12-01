@@ -7,46 +7,56 @@ import Footer from './Footer';
 import NavigationBar from './NavigationBar';
 
 export default class AddNewCenter extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      address: '',
-      capacity: '',
-      cost: '',
-      facilities: '',
-      image: '',
-      available: true,
-      userId: 4,
-      error: null
-    }
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+      centers: []
+    };
   }
-
-  onChange(e){
-    this.setState ({ [e.target.name]: e.target.value});
+  componentWillMount(){
+    this.props.getAllCenters().then(data => {
+      console.log(data)
+      this.setState({
+        centers: data.data.data
+      });
+    });
   }
+  render() { 
+    const userData = this.props.authUser;
 
-  onSubmit(e){
-    e.preventDefault();
-    this.props.addNewCenter(this.state)
-      .then(() => {
-        this.props.router.push('/');
-      }).catch(error => {
-        this.setState({
-          error: error.data.message
-        });
+    let centers = this.state.centers.map(center => {
+      let buttons;
+      if(userData && userData.user.userType === 'admin') {
+        buttons = <span>
+
+        <button type="submit" className="btn btn-primary btn-sm">Delete</button>
+        <button type="submit" className="btn btn-primary btn-sm">Edit</button>
+        </span> 
+      }
+      return (
+        <div className="row mt-3" key={center.id}>
+          <div className="col-lg-4 card mb-4">
+            
+            <div className="view overlay hm-white-slight z-depth-1-half">
+                <img src="https://mdbootstrap.com/img/Photos/Others/forest-sm.jpg" className="img-fluid" alt="Second sample image" />
+                <a>
+                <div className="mask" />
+                </a>
+            </div>
+          </div>
+            
+            <div className="col-lg-7 ml-xl-4 mb-4">
+            
+            <h4 className="mb-3"><strong>{center.name}</strong></h4>
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident et dolorum fuga.</p>
+            <p>added by <a><strong>admin</strong></a>, on 17/11/2017</p>
+            <button type="submit" className="btn btn-primary btn-sm">Read More</button>
+            {buttons}
+            </div>
+        </div>
+      );
     });
 
-  }
-
-
-  render() { 
-    let errorMessage = <small></small>;
-    if(this.state.error) {
-      errorMessage = <small className="text-danger">{this.state.error}</small>;
-    }
     return (
       <div>
         <div>
@@ -61,25 +71,7 @@ export default class AddNewCenter extends React.Component {
            
             <hr className="mb-5" />
             
-            <card className="row mt-3">
-            <div className="col-lg-4 mb-4">
-                
-                <div className="view overlay hm-white-slight z-depth-1-half">
-                    <img src="https://mdbootstrap.com/img/Photos/Others/forest-sm.jpg" className="img-fluid" alt="Second sample image" />
-                    <a>
-                    <div className="mask" />
-                    </a>
-                </div>
-                </div>
-                
-                <div className="col-lg-7 ml-xl-4 mb-4">
-                
-                <h4 className="mb-3"><strong>Philips All-in-one events</strong></h4>
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident et dolorum fuga.</p>
-                <p>added by <a><strong>admin</strong></a>, on 17/11/2017</p>
-                <button type="submit" className="btn btn-primary btn-sm">Read More</button><button type="submit" className="btn btn-primary btn-sm">Delete</button><button type="submit" className="btn btn-primary btn-sm">Edit</button>
-                </div>
-            </card>
+            {centers}
             
             </section>
         </main>
