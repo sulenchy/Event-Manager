@@ -37,3 +37,13 @@ export const signUpUser = (userData) => {
         });
     }
 }
+
+export const addNewCenter = (centerData) => {
+    return (dispatch) => {
+        return axios.post('/api/v1/centers', centerData).then((data) => {
+            return Promise.resolve(data);
+        }).catch((error) => {
+            return Promise.reject(error.response);
+        });
+    }
+}

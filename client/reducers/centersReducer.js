@@ -1,3 +1,10 @@
 export default (state = [], action) => {
-    return state;
+    switch(action.type){
+        case 'ADD_NEW_CENTER':
+            return [action.payload];
+        case 'GET_ALL_CENTER':
+            return [action.payload];
+        default:
+            return state;
+    }    
 };
