@@ -37,7 +37,7 @@ export default (sequelize, Sequelize) => {
       },
     },
     image: {
-      type: Sequelize.BLOB,
+      type: Sequelize.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,

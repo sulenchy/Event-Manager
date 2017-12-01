@@ -106,12 +106,12 @@ export class UpdateEvent {
 
 export class DeleteEvent {
   /**
- * parse values from the req.body & req.decoded to be used to delete the recipe
+ * parse values from the req.body & req.decoded to be used to delete the event
  * @static
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
  * @return {object} JSON object notifying the success of the delete request
- * @memberof RecipeDelete
+ * @memberof DeleteEvent
  */
   static deleteEvent(req, res) {
     /* Checks if user is authenticated */

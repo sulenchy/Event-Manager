@@ -114,9 +114,7 @@ export class UserSignin {
             and send this to the user for authentication.
            */
           const payload = { id: user.id, email: user.email, userType: user.userType };
-          const token = jwt.sign(payload, process.env.SECRET, {
-            expiresIn: '3h',
-          });
+          const token = jwt.sign(payload, process.env.SECRET);
           return res.status(200).send({
             status: 'Success',
             message: 'Congratulation, you successfully signed-in into andevents',

@@ -14,6 +14,7 @@ export default class NavigationBar extends React.Component {
             navButtons = <button className="btn btn-blue text-white"
             onClick={() => {
                 this.props.signOut();
+                this.props.router.push('/')
             }}
             >Sign-out</button>
         }

@@ -29,10 +29,8 @@ export default class SigninPage extends React.Component {
     onSubmit(e){
         e.preventDefault();
         this.props.signInUser({ email: this.state.email, password: this.state.password }).then((data) => {
-            console.log(data);
             this.props.router.push('/');
         }).catch(error => {
-            console.log(error);
             this.setState({ error: error.data.message });
         });
     }
