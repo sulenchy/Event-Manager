@@ -17,7 +17,7 @@ export default class AddNewCenter extends React.Component {
       facilities: '',
       image: '',
       available: true,
-      userId: '',
+      userId: 4,
       error: null
     }
     this.onChange = this.onChange.bind(this);
@@ -32,7 +32,7 @@ export default class AddNewCenter extends React.Component {
     e.preventDefault();
     this.props.addNewCenter(this.state)
       .then(() => {
-        this.props.router.push('/centers');
+        this.props.router.push('/');
       }).catch(error => {
         this.setState({
           error: error.data.message
@@ -93,12 +93,12 @@ export default class AddNewCenter extends React.Component {
                         <label htmlFor="Form-cost">Enter cost</label>
                     </div>
                     <div className="md-form">
-                        <input type="password" id="Form-facility" onChange={this.onChange} className="form-control" value= {this.state.facility} name="facility"></input>
-                        <label htmlFor="Form-username">Enter facilities</label>
+                        <input type="text" id="Form-facilities" onChange={this.onChange} className="form-control" value= {this.state.facilities} name="facilities"></input>
+                        <label htmlFor="Form-facilities">Enter facilities</label>
                     </div>
                     <div className="md-form">
-                        <input type="password" id="Form-image" onChange={this.onChange} className="form-control" value= {this.state.image} name="image"></input>
-                        <label htmlFor="Form-username">Enter image url</label>
+                        <input type="text" id="Form-image" onChange={this.onChange} className="form-control" value= {this.state.image} name="image"></input>
+                        <label htmlFor="Form-image">Enter image url</label>
                     </div>
                     <div className="text-center mb-3">
                         <button type="submit" className="btn btn-blue text-white btn-block btn-rounded z-depth-1a">Add</button>

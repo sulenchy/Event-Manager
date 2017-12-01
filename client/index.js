@@ -1,6 +1,7 @@
 // importing react dependencies
 import React from 'react';
 import ReactDom from 'react-dom';
+import axios from 'axios';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -20,6 +21,25 @@ const store = createStore(
 );
 
 export default store;
+
+
+/**
+ * setting token of an authorised user to axios from the entry point
+ */
+const setAxios = () => {    
+    const userData = localStorage.getItem('authUser');
+    if (userData) {
+        const token = JSON.parse(userData).token;
+        axios.defaults.headers.common['Token'] = token;
+        axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+    }
+    
+}
+
+// calling setAxios to set the token
+setAxios()
+
+
 
 ReactDom.render(
     <Provider store={store}>
