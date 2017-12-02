@@ -10,6 +10,7 @@ export default class NavigationBar extends React.Component {
             </span>
         );
 
+
         if (this.props.authUser) {
             navButtons = <button className="btn btn-blue text-white"
             onClick={() => {
@@ -23,11 +24,16 @@ export default class NavigationBar extends React.Component {
                 <li className="nav-item active">
                     <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
                 </li>
-                
+                <li className="nav-item">
+                    <Link className="nav-link" to="/addnewcenter">New Center</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/centers">Centers</Link>
+                </li>
             </ul>);
-        let pathName = this.props.location.pathname;
-
-        if (pathName === '/') {
+        // let pathName = this.props.location.pathname;
+        let authUser = this.props.authUser;
+        if (!authUser) {
             navLinks =  <ul className="navbar-nav mr-auto">
                             <li className="nav-item active">
                                 <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
@@ -53,7 +59,6 @@ export default class NavigationBar extends React.Component {
                             
                         </ul>
         }
-        console.log(navButtons);
         return (
             <header className="navbar navbar-default">
             <nav className="navbar navbar-expand-lg navbar-dark indigo fixed-top">
