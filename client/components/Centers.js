@@ -15,7 +15,6 @@ export default class AddNewCenter extends React.Component {
   }
   componentWillMount(){
     this.props.getAllCenters().then(data => {
-      console.log(data)
       this.setState({
         centers: data.data.data
       });

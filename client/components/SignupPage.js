@@ -9,6 +9,7 @@ import NavigationBar from './NavigationBar';
 export default class SignupPage extends React.Component {
   constructor(props){
     super(props);
+    //Initializing the states of the component
     this.state = {
       username: '',
       email: '',
@@ -17,6 +18,8 @@ export default class SignupPage extends React.Component {
       retypePassword: '',
       error: null
     }
+
+    // binding the handler of the component with reactcomponent handler
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -25,11 +28,12 @@ export default class SignupPage extends React.Component {
     this.setState ({ [e.target.name]: e.target.value});
   }
 
+
   onSubmit(e){
     e.preventDefault();
     this.props.signUpUser(this.state)
       .then(() => {
-        this.props.router.push('/signin');
+        this.props.push('/');
       }).catch(error => {
         this.setState({
           error: error.data.message
@@ -89,11 +93,8 @@ export default class SignupPage extends React.Component {
                     <div className="text-center mb-3">
                         <button type="submit" className="btn btn-blue text-white btn-block btn-rounded z-depth-1a">Sign up</button>
                     </div>
-                    
                   </form>
                 </div>
-        
-                
                 <div className="modal-footer mx-5 pt-3 mb-1">
                     <p className="font-small grey-text d-flex justify-content-end">Not a member? <Link to="/signin" className="blue-text ml-1">SIGN IN</Link></p>
                 </div>

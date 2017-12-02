@@ -15,7 +15,6 @@ import SigninPage from './components/SigninPage';
 import AddNewCenter from './components/AddNewCenter';
 import AddNewEvent from './components/AddNewEvent';
 import Centers from './components/Centers';
-// console.log(Routes);
 
 const store = createStore(
     rootReducer,

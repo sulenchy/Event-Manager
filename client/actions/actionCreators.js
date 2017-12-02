@@ -43,6 +43,7 @@ export const signOut = () => {
 export const signUpUser = (userData) => {
     return (dispatch) => {
         return axios.post('/api/v1/users/signup', userData).then((data) => {
+            signInUser(data);
             return Promise.resolve(data);
         }).catch((error) => {
             return Promise.reject(error.response);
