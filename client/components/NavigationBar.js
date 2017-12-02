@@ -53,7 +53,7 @@ export default class NavigationBar extends React.Component {
                             
                         </ul>
         }
-        console.log(navButtons);
+        
         return (
             <header className="navbar navbar-default">
             <nav className="navbar navbar-expand-lg navbar-dark indigo fixed-top">

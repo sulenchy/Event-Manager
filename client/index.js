@@ -14,7 +14,7 @@ import SignupPage from './components/SignupPage';
 import SigninPage from './components/SigninPage';
 import AddNewCenter from './components/AddNewCenter';
 import AddNewEvent from './components/AddNewEvent';
-// console.log(Routes);
+import Centers from './components/Centers';
 
 const store = createStore(
     rootReducer,
@@ -51,6 +51,7 @@ ReactDom.render(
                 <Route path="/signin" component={SigninPage}></Route>
                 <Route path="/addnewcenter" component={AddNewCenter}></Route>
                 <Route path="/addnewevent" component={AddNewEvent}></Route>
+                <Route path="/centers" component={Centers}></Route>
             </Route>
         </Router>
     </Provider>, document.getElementById('app'));

@@ -4,6 +4,8 @@ export default (state = [], action) => {
             return [action.payload];
         case 'GET_ALL_CENTER':
             return [action.payload];
+        case 'GET_CENTER_DETAILS':
+            return [action.payload];
         default:
             return state;
     }    
