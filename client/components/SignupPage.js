@@ -24,16 +24,16 @@ export default class SignupPage extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  // this is the handler triggered when the user type something on each field
   onChange(e){
     this.setState ({ [e.target.name]: e.target.value});
   }
 
-
+  // this is the handler triggered when the user click the signup button
   onSubmit(e){
     e.preventDefault();
-    this.props.signUpUser(this.state)
-      .then(() => {
-        this.props.push('/');
+    this.props.signUpUser(this.state).then(() => {
+        this.props.router.push('/');
       }).catch(error => {
         this.setState({
           error: error.data.message
@@ -46,10 +46,9 @@ export default class SignupPage extends React.Component {
 
     let errorMessage = <small></small>;
 
-    if(this.state.error) {
-      
+    //
+    if(this.state.error) {      
       errorMessage = <small className="text-danger">{this.state.error}</small>;
-      
     }
 
     return (

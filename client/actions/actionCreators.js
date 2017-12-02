@@ -35,21 +35,44 @@ export const signOut = () => {
 }
 
 
+// /**
+//  * Signs new user up
+//  * @param {*} userData
+//  * @returns promise 
+//  */
+// export const signUpUser = (userData) => {
+//     return (dispatch) => {
+//         return axios.post('/api/v1/users/signup', userData).then((data) => {
+//             signInUser(data);
+//             return Promise.resolve(data);
+//         }).catch((error) => {
+//             return Promise.reject(error.response);
+//         });
+//     }
+// }
+
+
 /**
- * Signs new user up
- * @param {*} userData
- * @returns promise 
+ * Sign un a user
+ * @param {*} userData 
  */
 export const signUpUser = (userData) => {
     return (dispatch) => {
-        return axios.post('/api/v1/users/signup', userData).then((data) => {
-            signInUser(data);
-            return Promise.resolve(data);
-        }).catch((error) => {
+        return axios.post('/api/v1/users/signup', userData).then(response => {
+            let user = response.data.user;
+            let token = response.data.data;
+            localStorage.setItem('authUser', JSON.stringify({ user, token }));
+            dispatch({
+                type: 'SIGN_UP_USER',
+                payload: { user, token }
+            });
+            return Promise.resolve(response);
+        }).catch(error => {
             return Promise.reject(error.response);
         });
     }
 }
+
 
 /**
  * Adds new center to the database

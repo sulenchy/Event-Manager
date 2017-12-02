@@ -54,11 +54,15 @@ export class UserSignup {
         userType,
       })
       .then((user) => {
+        const payload = { id: user.id, email: user.email, userType: user.userType };
+        const token = jwt.sign(payload, process.env.SECRET);
         res.status(201).send({
           status: 'Success',
           message: 'Account created successfully',
-          username: user.username,
-          id: user.id,
+          // username: user.username,
+          // id: user.id,
+          data: token,
+          user
         });
       })
       .catch(err => res.status(400).send({
