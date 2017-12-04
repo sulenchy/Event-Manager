@@ -31,7 +31,7 @@ class Greetings extends React.Component {
               <h1 className="h1-responsive">Hello {authUserName}, welcome to Andevents</h1>
               <p className="lead">Andevents is the best event manager you can find anywhere across Nigeria. We have locations all over the country. We offer the best price you can think of. We manage everything about your event…</p>
               <hr className="my-2"></hr>
-              <p>With us all events are boom ! !! !!!.</p>
+              <p>With us all events are boom ! !! !!!!.</p>
               {homeButton}
             </div>
             <div className="carousel slide carousel-fade text-center" id="trending-centers" data-ride="carousel">

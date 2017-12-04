@@ -43,7 +43,8 @@ export class AddNewEvent {
       })
       .catch(err => res.status(400).send({
         status: `Event ${err.status}: Error adding new event`,
-        message: 'Sorry, Invalid data supplied',
+        message: 'Sorry, Invalid data supplied'
+        //message:err.message,
       }));
   }
 }
@@ -71,13 +72,13 @@ export class UpdateEvent {
         },
       })
       .then((event) => {
-        if (!event) {
-          return res.status(404).send({
-            status: 'Error finding the Event',
-            message: 'Sorry, the selected event cannot be found',
-            data: event,
-          });
-        }
+        // if (!event) {
+        //   return res.status(404).send({
+        //     status: 'Error finding the Event',
+        //     message: 'Sorry, the selected event cannot be found',
+        //     data: event,
+        //   });
+        // }
         /* Updates the event and returns the updated event */
         return event
           .update({
