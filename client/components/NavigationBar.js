@@ -12,6 +12,7 @@ export default class NavigationBar extends React.Component {
             </span>
         );
 
+
         if (this.props.authUser) {
             navButtons = <button className="btn btn-blue text-white"
             onClick={() => {
@@ -65,14 +66,39 @@ export default class NavigationBar extends React.Component {
                     <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to="/addnewevent">New event<span className="sr-only">(current)</span></Link>
+                    <Link className="nav-link" to="/addnewcenter">New Center</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to="/centers">Centers<span className="sr-only">(current)</span></Link>
+                    <Link className="nav-link" to="/centers">Centers</Link>
                 </li>
-                
             </ul>);
-            }
+        // let pathName = this.props.location.pathname;
+        let authUser = this.props.authUser;
+        if (!authUser) {
+            navLinks =  <ul className="navbar-nav mr-auto">
+                            <li className="nav-item active">
+                                <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
+                            </li>
+                            <li className="nav-item">
+                                    <a className="nav-link" href="#about">About us</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#trending-centers">Trending Centers</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#recent-events">Recent Events</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#testimonials">Testimonials</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#">Help</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#">Contacts</a>
+                                </li>
+                            
+                        </ul>
         }
         return (
             <header className="navbar navbar-default">
