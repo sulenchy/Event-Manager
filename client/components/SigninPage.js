@@ -5,13 +5,14 @@ import Footer from './Footer';
 export default class SigninPage extends React.Component {
     constructor(props) {
         super(props);
-
+        //Initializing the states of the component
         this.state = {
             email: '',
             password: '',
             error: null
         };
 
+        // binding the handlers component with the react.component handler
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
@@ -22,6 +23,10 @@ export default class SigninPage extends React.Component {
         } 
     }
 
+    /**
+     * this is an onChange event method. setting the state of 
+     * @param {*} e 
+     */
     onChange(e){
         this.setState ({ [e.target.name]: e.target.value});
     }
@@ -47,16 +52,13 @@ export default class SigninPage extends React.Component {
                 <main className="container">
                     <div className="row">
                     <section className="form-elegant col-md-6 offset-3 mt-5">
-                        {/*Form without header*/}
                         <div className="card">
                         <div className="card-body mx-4">
-                            {/*Header*/}
                             <div className="text-center">
                             <h3 className="dark-grey-text mb-5"><strong>Sign in</strong></h3>
                             {errorMessage}
                             <br/>
                             </div>
-                            {/*Body*/}
                             <div className="md-form">
                             <input type="text" id="Form-email1" value={this.state.email} name="email" onChange={this.onChange} className="form-control" />
                             <label htmlFor="Form-email1">Your email</label>
@@ -71,12 +73,10 @@ export default class SigninPage extends React.Component {
                             </div>
  
                         </div>
-                        {/*Footer*/}
                         <div className="modal-footer mx-5 pt-3 mb-1">
                             <p className="font-small grey-text d-flex justify-content-end">Not a member? <a href="signup.html" className="blue-text ml-1"> Sign Up</a></p>
                         </div>
                         </div>
-                        {/*/Form without header*/}
                     </section>
                     </div>
                 </main>

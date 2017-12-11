@@ -97,8 +97,9 @@ export default class AddNewCenter extends React.Component {
                         <label htmlFor="Form-facilities">Enter facilities</label>
                     </div>
                     <div className="md-form">
-                        <input type="text" id="Form-image" onChange={this.onChange} className="form-control" value= {this.state.image} name="image"></input>
-                        <label htmlFor="Form-image">Enter image url</label>
+                        <div className="file-path-wrapper">
+                          <input className="file-path validate" type="file" onChange={this.onChange} placeholder="Upload center image" value={this.state.image} name="image"></input>
+                        </div>
                     </div>
                     <div className="text-center mb-3">
                         <button type="submit" className="btn btn-blue text-white btn-block btn-rounded z-depth-1a">Add</button>

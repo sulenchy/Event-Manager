@@ -3,7 +3,10 @@ export default (sequelize, Sequelize) => {
     name: {
       type: Sequelize.TEXT,
       allowNull: false,
-      unique: true,
+      unique: {
+        args: true,
+        msg: 'This center name is already taken, please enter a new center name',
+      },
       validate: {
         notEmpty: true,
       },
@@ -20,6 +23,10 @@ export default (sequelize, Sequelize) => {
       allowNull: false,
       validate: {
         notEmpty: true,
+        isNumeric: {
+          arg: true,
+          msg: 'Capacity should be a number in integer'
+        }
       },
     },
     cost: {
@@ -27,6 +34,10 @@ export default (sequelize, Sequelize) => {
       allowNull: false,
       validate: {
         notEmpty: true,
+        isNumeric: {
+          arg: true,
+          msg: 'Cost should be a number in decimal'
+        }
       },
     },
     facilities: {

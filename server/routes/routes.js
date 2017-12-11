@@ -26,9 +26,7 @@ router.get('/api/v1/home', (req, res) => {
 router.post('/api/v1/users/signup', UserSignup.signUp);
 router.post('/api/v1/users/signin', UserSignin.signIn);
 router.get('/api/v1/centers', GetCenterList.listAll);
-router.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/../../client/index.html'));
-});
+
 // authenticate the secure endpoint
 router.use(auth.verifyUser);
 
@@ -48,5 +46,9 @@ router.put('/api/v1/centers/:id', UpdateCenter.updateCenter);
 router.post('/api/v1/events', AddNewEvent.addNew);
 router.put('/api/v1/events/:id', UpdateEvent.updateEvent);
 router.delete('/api/v1/events/:id', DeleteEvent.deleteEvent);
+
+router.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/../../client/index.html'));
+});
 
 export default router;

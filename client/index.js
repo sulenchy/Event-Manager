@@ -15,6 +15,9 @@ import SigninPage from './components/SigninPage';
 import AddNewCenter from './components/AddNewCenter';
 import AddNewEvent from './components/AddNewEvent';
 
+import Centers from './components/Centers';
+
+
 const store = createStore(
     rootReducer,
     applyMiddleware(thunk)
@@ -51,6 +54,7 @@ ReactDom.render(
                 <Route path="/addnewcenter" component={AddNewCenter}></Route>
                 <Route path="/centers" component={Centers}></Route>
                 <Route path="/addnewevent" component={AddNewEvent}></Route>
+                <Route path="/centers" component={Centers}></Route>
             </Route>
         </Router>
     </Provider>, document.getElementById('app'));

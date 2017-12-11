@@ -3,9 +3,12 @@ export default (sequelize, Sequelize) => {
     username: {
       type: Sequelize.STRING,
       allowNull: false,
-      unique: true,
       validate: {
         is: /^[a-z]+$/i,
+      },
+      unique: {
+        args: true,
+        msg: 'This username is already taken, enter a new username',
       },
     },
     email: {
@@ -38,7 +41,8 @@ export default (sequelize, Sequelize) => {
     },
 
   });
-    /* User has a relationship with centers and events */
+
+  /* User has relationship with centers and events */
   Users.associate = (model) => {
     Users.hasMany(model.Events, {
       foreignKey: 'userId',
