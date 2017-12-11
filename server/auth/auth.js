@@ -23,7 +23,7 @@ export default { // exported into the server module/file
       jwt.verify(token, process.env.SECRET, (error, decoded) => {
         if (error) { // if error, user is not allowed access for expired token
           return res.status(403).send({
-            status: 'Fail',
+            status: 'Authentication Failed',
             message: 'Authentication Failed, Please signin again to get a token.',
           });
         }// we store token in the req object for later authentication use
@@ -32,7 +32,7 @@ export default { // exported into the server module/file
       });
     } else { // when token is not supplied, this error response is returned
       return res.status(403).send({
-        status: 'Fail',
+        status: 'Authentication Failed',
         message: 'Please send your token along with your request',
       });
     }

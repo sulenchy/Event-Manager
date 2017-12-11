@@ -19,8 +19,8 @@ export class AddNewCenter {
     const { userType } = req.decoded;
     if (userType !== 'admin') {
       return res.status(401).send({
-        status: 'Authority Error',
-        message: 'Sorry, you do not have the required previledge to the resource',
+        status: 'Error adding new center',
+        message: 'You are not authorized to perform this action',
       });
     }
     const {
@@ -41,13 +41,12 @@ export class AddNewCenter {
         res.status(201).send({
           status: 'Success',
           message: 'Center added successfully',
-          name: center.name,
-          id: center.id,
+          center
         });
       })
-      .catch(err => res.status(400).send({
-        status: `Operation ${err.status}`,
-        message: 'This center name already exist or invalid data supplied',
+      .catch(err => res.status(500).send({
+        status: `Error adding new center`,
+        message: err.message,
       }));
   }
 }
@@ -72,24 +71,23 @@ export class GetCenterList {
       .findAll({
         order: [['name', 'ASC']],
       })
-      .then((center) => {
+      .then((centers) => {
         /* Checks if db is empty and returns a notice to enter a recipe */
-        if (center.length === 0) {
+        if (centers.length === 0) {
           return res.status(400).send({
             status: 'Empty list found',
-            message: 'Sorry, No center is available.',
-            data: center,
+            centers
           });
         }
         return res.status(200).send({
           status: 'Success',
-          message: 'Centers below',
-          data: center,
+          message: 'List of Centers',
+          centers
         });
       })
-      .catch(error => res.status(400).send({
-        status: `Operation ${error.status}`,
-        message: 'Getting list of event failed',
+      .catch(error => res.status(500).send({
+        status: `Error getting list of centers`,
+        message: error.message,
       }));
   }
 }
@@ -107,9 +105,10 @@ export class GetCenterWithEvent {
    * @returns {object} res.
    */
   static getCenter(req, res) {
-    Centers.findOne({
+    return Centers
+    .findOne({
       where: {
-        id: req.params.id,
+        id: parseInt(req.params.id,10),
       },
       include: [
         {
@@ -119,23 +118,21 @@ export class GetCenterWithEvent {
       ],
     })
       .then((center) => {
-      /* Checks if db is empty and returns a notice to enter a Center */
-        if (center.length === 0) {
-          return res.status(400).send({
-            status: 'Fail',
-            message: 'No Center available, please enter a Center.',
-            data: center,
+        if (!center) {
+          return res.status(404).send({
+            status: 'Error getting the center',
+            message: 'Sorry, the center cannot be found',
           });
         }
         return res.status(200).send({
           status: 'Success',
           message: 'Centers below',
-          data: center,
+          center,
         });
       })
-      .catch(error => res.status(400).send({
-        status: `Center ${error.status}`,
-        message: 'Selected center cannot be found',
+      .catch(error => res.status(500).send({
+        status: `Error getting the center`,
+        message: error.message,
       }));
   }
 }
@@ -161,7 +158,7 @@ export class UpdateCenter {
   static updateCenter(req, res) {
     /* Grab values to be used to authenticate from the request object */
     const userId = req.decoded.id;
-
+    
     /* Finds a event to be updated */
     return Centers
       .find({
@@ -173,26 +170,35 @@ export class UpdateCenter {
       .then((center) => {
         if (!center) {
           return res.status(404).send({
-            status: 'Error finding the Event',
-            message: 'Sorry, the selected event cannot be found',
-            data: center,
+            status: 'Error updating the center details',
+            message: 'Sorry, the center cannot be found',
           });
         }
+
         /* Updates the event and returns the updated event */
         return center
           .update({
-            available: center.available !== true,
+            name: req.body.name || center.name,
+            address: req.body.address || center.address,
+            capacity: req.body.capacity || center.address,
+            cost: req.body.cost || center.cost,
+            facilities: req.body.facilities || center.facilities,
+            image: req.body.image || center.image,
+            available: true || center.available,
           })
           .then(updatedCenter => res.status(200).send({
             status: 'Success',
             message: 'Center details updated successfully',
             data: updatedCenter,
-          }));
-        // .catch(err => res.status(400).send(err));
+          }))
+          .catch(err => res.status(500).send({
+            status: `Error updating center details`,
+            message: err.message,
+          }));          
       })
-      .catch(err => res.status(400).send({
-        status: `Center ${err.status}: Error finding center`,
-        message: 'Sorry, Center cannot be found. Please supply valid center id',
+      .catch(err => res.status(500).send({
+        status: `Error updating center details`,
+        message: err.center,
       }));
   }
 }

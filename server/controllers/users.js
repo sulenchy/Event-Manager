@@ -26,22 +26,23 @@ export class UserSignup {
     username = req.body.username.toString().toLowerCase().trim();
     userType = req.body.userType === undefined ? 'client' : req.body.userType.toString().toLowerCase().trim();
     retypePassword = req.body.retypePassword;
-    
+    password = req.body.password.toString();
+
     /* Checks password length */
     if (password.length < 8) {
       return res.status(400).send({
-        status: 'Password error',
-        message: 'Password must not be less than 8 or be undefined',
+        status: 'Error signing up',
+        message: 'Password must not be less than 8 character',
       });
     }
+    
+    // compare the password and the retype password
     if (password !== retypePassword) {
       return res.status(400).send({
-        status: 'Password error',
+        status: 'Error signing up',
         message: 'Password supplied deos not tally with retype password',
       });
     }
-
-    
 
     /* encrypt password and stores in the database
     along with some user information */
@@ -55,19 +56,17 @@ export class UserSignup {
       })
       .then((user) => {
         const payload = { id: user.id, email: user.email, userType: user.userType };
-        const token = jwt.sign(payload, process.env.SECRET);
+        const token = jwt.sign(payload, process.env.SECRET,{expiresIn: '3h'});
         res.status(201).send({
           status: 'Success',
           message: 'Account created successfully',
-          // username: user.username,
-          // id: user.id,
-          data: token,
+          token: token,
           user
         });
       })
       .catch(err => res.status(400).send({
-        status: `Operation ${err.status} Error signing up`,
-        message: 'This username already exist or invalid data supplied',
+        status: `Error signing up`,
+        message: err.message,
       }));
   }
 }
@@ -91,11 +90,13 @@ export class UserSignin {
       these values are parsed and then if there is an error it is returned
       if
      */
-    const { email, password } = req.body;
+    let { email, password } = req.body;
+    email = req.body.email.toString().toLowerCase().trim();
+
     if (!email || !password) {
       return res.status(400).send({
-        status: 'Sign-in Error',
-        message: 'Please enter your email and password',
+        status: 'Error signing in',
+        message: 'Sorry, email or password cannot be empty',
       });
     }
     return Users // check the db if user has already signedup
@@ -107,8 +108,8 @@ export class UserSignin {
       .then((user) => {
         if (!user) { // returns an error if user has not signedup yet
           return res.status(400).send({
-            status: 'Sign-in Error',
-            message: 'User not found. Sign-in with correct data or signup as a new client',
+            status: 'Error signing in',
+            message: 'Sorry, user not found ...',
           });
         }
         if (bcrypt.compareSync(password, user.password)) {
@@ -118,18 +119,22 @@ export class UserSignin {
             and send this to the user for authentication.
            */
           const payload = { id: user.id, email: user.email, userType: user.userType };
-          const token = jwt.sign(payload, process.env.SECRET);
+          const token = jwt.sign(payload, process.env.SECRET,{expiresIn:'3h'});
           return res.status(200).send({
             status: 'Success',
             message: 'Congratulation, you successfully signed-in into andevents',
-            data: token,
+            token: token,
             user
           });
         }
         return res.status(400).send({
-          status: 'Login Error',
-          message: 'Incorrect login details supplied',
+          status: 'Error signing in',
+          message: 'Sorry, email or password is incorrect',
         });
-      });
+      })
+      .catch(err => res.status(400).send({
+        status: `Error signing up`,
+        message: err.message,
+      }));
   }
 }

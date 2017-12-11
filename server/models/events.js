@@ -4,28 +4,40 @@ export default (sequelize, Sequelize) => {
       type: Sequelize.TEXT,
       allowNull: false,
       validate: {
-        notEmpty: true,
+        notEmpty: {
+          arg: true,
+          msg: 'title is required'
+        }
       },
     },
     description: {
       type: Sequelize.TEXT,
       allowNull: false,
       validate: {
-        notEmpty: true,
+        notEmpty: {
+          arg: true,
+          msg: 'Description is required'
+        }
       },
     },
     event_type: {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true,
+        notEmpty: {
+          arg: true,
+          msg: 'Event_type is required'
+        }
       },
     },
     estimated_attendees: {
       type: Sequelize.INTEGER,
       allowNull: false,
       validate: {
-        notEmpty: true,
+        notEmpty: {
+          arg: true,
+          msg: 'estimated_attendees is required'
+        }
       },
     },
     event_date: {
@@ -33,15 +45,24 @@ export default (sequelize, Sequelize) => {
       allowNull: false,
       unique: true,
       validate: {
-        isDate: true,
-        notEmpty: true,
+        isDate: {
+          arg: true,
+          msg: 'Date format is required'
+        },
+        notEmpty: {
+          arg: true,
+          msg: 'event_date is required'
+        }
       },
     },
     lga: {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true,
+        notEmpty: {
+          arg: true,
+          msg: 'lga is required'
+        }
       },
     },
   });
