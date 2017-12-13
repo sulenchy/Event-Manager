@@ -17,7 +17,6 @@
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "chai": "^4.1.2",
-    "coveralls": "^3.0.0",
     "cross-env": "^5.1.1",
     "css-loader": "^0.28.7",
     "dotenv": "^4.0.0",
@@ -61,13 +60,14 @@
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.5",
     "style-loader": "^0.19.0",
+    "coveralls": "^3.0.0",
     "istanbul": "0.3.5"
   },
   "scripts": {
     "start:webpack": "npm run build:webpack",
     "build:webpack": "webpack -d && cp client/index.html dist/index.html && webpack-dev-server --content-base client/ --inline --hot",
     "build:prod:webpack": "webpack -p && copy ./client/index.html",
-    "test": "npm run migrate && nyc --reporter=html --reporter=lcov --reporter=text mocha --timeout 250000 server/test.js --compilers js:babel-core/register --exit",
+    "test": "npm run migrate && ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec server/test.js --compilers js:babel-core/register --exit",
     "start": "nodemon --watch server --exec babel-node -- server/index.js",
     "clean": "rm -rf dist",
     "build": "npm run clean && mkdir dist && babel server/ -s -d dist",
