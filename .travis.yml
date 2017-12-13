@@ -4,20 +4,24 @@ env:
 language: node_js
 node_js:
   - "stable"
+
+
+before_script:
+  - psql -c 'create database event_manager_test;' -U postgres
+  - npm install nyc coveralls codeclimate-test-reporter -g
+
+
+
 script:
 - npm test
 
 env:
 - NODE_ENV=test
 
-before_script:
-  - psql -c 'create database event_manager_test;' -U postgres
-  - npm install nyc coveralls codeclimate-test-reporter -g
 
-after_script:
-  - nyc report --reporter=text-lcov | coveralls
-  - codeclimate-test-reporter < ./coverage/lcov.info
 
+after_script: istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+ 
 services:
   - postgresql
 
