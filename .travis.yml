@@ -4,11 +4,7 @@ env:
 language: node_js
 node_js:
   - "stable"
-script:
-- npm test
 
-env:
-- NODE_ENV=test
 
 before_script:
   - psql -c 'create database event_manager_test;' -U postgres
@@ -16,7 +12,15 @@ before_script:
 
 
 
-after_script: istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+script:
+- npm test
+
+env:
+- NODE_ENV=test
+
+
+
+after_script: NODE_ENV=test istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
  
 services:
   - postgresql
