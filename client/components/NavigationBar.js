@@ -60,7 +60,8 @@ export default class NavigationBar extends React.Component {
                     <Link className="nav-link" to="/centers">Centers<span className="sr-only">(current)</span></Link>
                 </li>
             </ul>
-            }else if(JSON.parse(localStorage.getItem('authUser')).user.userType === 'client'){
+            }
+            else if(JSON.parse(localStorage.getItem('authUser')).user.userType === 'client'){
                 navLinks = (<ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
                     <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
@@ -116,4 +117,4 @@ export default class NavigationBar extends React.Component {
           </header>
         );
     }
-}
+}}}

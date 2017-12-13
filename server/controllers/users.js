@@ -28,11 +28,12 @@ export class UserSignup {
     retypePassword = req.body.retypePassword;
     password = req.body.password.toString();
 
+
     /* Checks password length */
     if (password.length < 8) {
       return res.status(400).send({
         status: 'Error signing up',
-        message: 'Password must not be less than 8 character',
+        message: 'Password must not be less than 8 characters',
       });
     }
     
@@ -40,7 +41,7 @@ export class UserSignup {
     if (password !== retypePassword) {
       return res.status(400).send({
         status: 'Error signing up',
-        message: 'Password supplied deos not tally with retype password',
+        message: 'Password supplied does not tally with retype password',
       });
     }
 
@@ -133,7 +134,7 @@ export class UserSignin {
         });
       })
       .catch(err => res.status(400).send({
-        status: `Error signing up`,
+        status: `Error signing in`,
         message: err.message,
       }));
   }

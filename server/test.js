@@ -52,12 +52,12 @@ describe('Signup with "/api/v1/users/signup"', () => {
       })
       .expect(400)
       .then((res) => {
-        assert.equal(res.body.status, 'Password error');
-        assert.deepEqual(res.body.message, 'Password must not be less than 8 or be undefined');
+        assert.equal(res.body.status, 'Error signing up');
+        assert.deepEqual(res.body.message, 'Password must not be less than 8 characters');
         assert.deepEqual(res.status, 400);
         done();
       })
-      .catch(err => done(err));
+      .catch(err => done(err.message));
   });
   it('Should successfully signup user', (done) => {
     request(app)
@@ -66,19 +66,19 @@ describe('Signup with "/api/v1/users/signup"', () => {
         username: 'tester',
         email: 'tester@test.com',
         password: 'idreskunn',
-        userType: 'admin',
         retypePassword: 'idreskunn',
+        userType: 'admin',
       })
       .expect(201)
       .then((res) => {
         assert.deepEqual(res.body.status, 'Success');
         assert.deepEqual(res.body.message, 'Account created successfully');
-        assert.deepEqual(res.body.username, 'tester');
-        assert.deepEqual(res.body.id, 1);
+        assert.deepEqual(res.body.user.username, 'tester');
+        assert.deepEqual(res.body.user.id, 1);
         assert.deepEqual(res.status, 201);
         done();
       })
-      .catch(err => done(err));
+      .catch(err => done(err.message));
   });
   it('Should successfully signup user', (done) => {
     request(app)
@@ -87,19 +87,19 @@ describe('Signup with "/api/v1/users/signup"', () => {
         username: 'client',
         email: 'client@test.com',
         password: 'client12345',
-        userType: 'client',
         retypePassword: 'client12345',
+        userType: 'client',
       })
       .expect(201)
       .then((res) => {
         assert.deepEqual(res.body.status, 'Success');
         assert.deepEqual(res.body.message, 'Account created successfully');
-        assert.deepEqual(res.body.username, 'client');
-        assert.deepEqual(res.body.id, 2);
+        assert.deepEqual(res.body.user.username, 'client');
+        assert.deepEqual(res.body.user.id, 2);
         assert.deepEqual(res.status, 201);
         done();
       })
-      .catch(err => done(err));
+      .catch(err => done(err.message));
   });
   it('should return "user already exists" error', (done) => {
     request(app)
@@ -108,17 +108,17 @@ describe('Signup with "/api/v1/users/signup"', () => {
         username: 'tester',
         email: 'tester@test.com',
         password: 'idreskunn',
-        userType: 'admin',
         retypePassword: 'idreskunn',
+        userType: 'admin',
       })
       .expect(400)
       .then((res) => {
-        assert.equal(res.body.status, 'Operation undefined Error signing up');
-        assert.deepEqual(res.body.message, 'This username already exist or invalid data supplied');
+        assert.equal(res.body.status, 'Error signing up');
+        assert.deepEqual(res.body.message, 'This username is already taken, enter a new username');
         assert.deepEqual(res.status, 400);
         done();
       })
-      .catch(err => done(err));
+      .catch(err => done(err.message));
   });
 });
 
@@ -133,8 +133,8 @@ describe('Signin with "/api/v1/users/signin"', () => {
       })
       .expect(400)
       .then((res) => {
-        assert.deepEqual(res.body.status, 'Sign-in Error');
-        assert.deepEqual(res.body.message, 'Please enter your email and password');
+        assert.deepEqual(res.body.status, 'Error signing in');
+        assert.deepEqual(res.body.message, 'Sorry, email or password cannot be empty');
         done();
       });
   });
@@ -147,8 +147,8 @@ describe('Signin with "/api/v1/users/signin"', () => {
       })
       .expect(400)
       .then((res) => {
-        assert.deepEqual(res.body.status, 'Sign-in Error');
-        assert.deepEqual(res.body.message, 'User not found. Sign-in with correct data or signup as a new client');
+        assert.deepEqual(res.body.status, 'Error signing in');
+        assert.deepEqual(res.body.message, 'Sorry, user not found ...');
         assert.deepEqual(res.status, 400);
         done();
       });
@@ -162,8 +162,8 @@ describe('Signin with "/api/v1/users/signin"', () => {
       })
       .expect(400)
       .then((res) => {
-        assert.deepEqual(res.body.status, 'Login Error');
-        assert.deepEqual(res.body.message, 'Incorrect login details supplied');
+        assert.deepEqual(res.body.status, 'Error signing in');
+        assert.deepEqual(res.body.message, 'Sorry, email or password is incorrect');
         assert.deepEqual(res.status, 400);
         done();
       });
@@ -180,7 +180,7 @@ describe('Signin with "/api/v1/users/signin"', () => {
         assert.deepEqual(res.body.status, 'Success');
         assert.deepEqual(res.body.message, 'Congratulation, you successfully signed-in into andevents');
         assert.deepEqual(res.status, 200);
-        token = res.body.data;
+        token = res.body.token;
         done();
       });
   });
@@ -195,8 +195,8 @@ describe('GET, POST and PUT Centers', () => {
       .expect(400)
       .then((res) => {
         assert.deepEqual(res.body.status, 'Empty list found');
-        assert.deepEqual(res.body.message, 'Sorry, No center is available.');
-        assert.lengthOf(res.body.data, 0);
+        assert.deepEqual(res.body.message, 'Sorry, No center is available');
+        assert.lengthOf(res.body.centers, 0);
         done();
       })
       .catch(err => done(err));
@@ -214,7 +214,7 @@ describe('GET, POST and PUT Centers', () => {
       })
       .expect(403)
       .then((res) => {
-        assert.deepEqual(res.body.status, 'Fail');
+        assert.deepEqual(res.body.status, 'Authentication failed');
         assert.deepEqual(res.body.message, 'Please send your token along with your request');
         assert.deepEqual(res.status, 403);
         done();
@@ -235,8 +235,8 @@ describe('GET, POST and PUT Centers', () => {
       })
       .expect(403)
       .then((res) => {
-        assert.deepEqual(res.body.status, 'Fail');
-        assert.deepEqual(res.body.message, 'Authentication Failed, Please signin again to get a token.');
+        assert.deepEqual(res.body.status, 'Authentication failed');
+        assert.deepEqual(res.body.message, 'Please, signin again to get a token.');
         assert.deepEqual(res.status, 403);
         done();
       })
@@ -256,8 +256,8 @@ describe('GET, POST and PUT Centers', () => {
       })
       .expect(401)
       .then((res) => {
-        assert.deepEqual(res.body.status, 'Authority Error');
-        assert.deepEqual(res.body.message, 'Sorry, you do not have the required previledge to the resource');
+        assert.deepEqual(res.body.status, 'Error accessing the resource');
+        assert.deepEqual(res.body.message, 'Sorry, you do not have the required priviledge to the resource');
         assert.deepEqual(res.status, 401);
         done();
       })
@@ -275,7 +275,7 @@ describe('GET, POST and PUT Centers', () => {
         assert.deepEqual(res.body.status, 'Success');
         assert.deepEqual(res.body.message, 'Congratulation, you successfully signed-in into andevents');
         assert.deepEqual(res.status, 200);
-        token = res.body.data;
+        token = res.body.token;
         done();
       });
   });
@@ -296,6 +296,18 @@ describe('GET, POST and PUT Centers', () => {
         assert.deepEqual(res.body.status, 'Success');
         assert.deepEqual(res.body.message, 'Center added successfully');
         assert.deepEqual(res.status, 201);
+        done();
+      })
+      .catch(err => done(err.message));
+  });
+  it('should return an error if no center', (done) => {
+    request(app)
+      .get('/api/v1/centers')
+      .expect(200)
+      .then((res) => {
+        assert.deepEqual(res.body.status, 'Success');
+        assert.deepEqual(res.body.message, 'List of Centers');
+        assert.lengthOf(res.body.centers, 1);
         done();
       })
       .catch(err => done(err));
