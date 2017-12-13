@@ -34,7 +34,6 @@ router.use(auth.verifyUser);
  * Centers endpoints requiring authentication before getting access
  *to different points of the routerlication
  */
-
 router.post('/api/v1/centers', AddNewCenter.addNew);
 router.get('/api/v1/centers/:id', GetCenterWithEvent.getCenter);
 router.put('/api/v1/centers/:id', UpdateCenter.updateCenter);

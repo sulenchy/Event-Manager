@@ -19,8 +19,8 @@ export class AddNewCenter {
     const { userType } = req.decoded;
     if (userType !== 'admin') {
       return res.status(401).send({
-        status: 'Error adding new center',
-        message: 'You are not authorized to perform this action',
+        status: 'Error accessing the resource',
+        message: 'Sorry, you do not have the required priviledge to the resource',
       });
     }
     const {
@@ -76,6 +76,7 @@ export class GetCenterList {
         if (centers.length === 0) {
           return res.status(400).send({
             status: 'Empty list found',
+            message: 'Sorry, No center is available',
             centers
           });
         }
@@ -121,7 +122,7 @@ export class GetCenterWithEvent {
         if (!center) {
           return res.status(404).send({
             status: 'Error getting the center',
-            message: 'Sorry, the center cannot be found',
+            message: 'Sorry, the selected center cannot be found',
           });
         }
         return res.status(200).send({
