@@ -14,7 +14,6 @@ import SignupPage from './components/SignupPage';
 import SigninPage from './components/SigninPage';
 import AddNewCenter from './components/AddNewCenter';
 import AddNewEvent from './components/AddNewEvent';
-
 import Centers from './components/Centers';
 
 
@@ -29,14 +28,14 @@ export default store;
 /**
  * setting token of an authorised user to axios from the entry point
  */
-const setAxios = () => {    
+const setAxios = () => {
     const userData = localStorage.getItem('authUser');
     if (userData) {
         const token = JSON.parse(userData).token;
         axios.defaults.headers.common['Token'] = token;
         axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
     }
-    
+
 }
 
 // calling setAxios to set the token
@@ -48,7 +47,7 @@ ReactDom.render(
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={Main}>
-                <IndexRoute component={Greetings}></IndexRoute>  
+                <IndexRoute component={Greetings}></IndexRoute>
                 <Route path="/signup" component={SignupPage}></Route>
                 <Route path="/signin" component={SigninPage}></Route>
                 <Route path="/addnewcenter" component={AddNewCenter}></Route>

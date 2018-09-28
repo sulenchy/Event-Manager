@@ -75,7 +75,8 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "nyc": "nyc report",
     "lint": "eslint server",
-    "migrate": "sequelize db:migrate:undo:all && sequelize db:migrate"
+    "migrate": "sequelize db:migrate:undo:all && sequelize db:migrate",
+    "sequelize:seed": "sequelize seed:generate"
   },
   "repository": {
     "type": "git",
