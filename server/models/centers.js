@@ -34,6 +34,7 @@ export default (sequelize, Sequelize) => {
       allowNull: false,
       validate: {
         notEmpty: true,
+        defaultValue: 0.0,
         isNumeric: {
           arg: true,
           msg: 'Cost should be a number in decimal'
@@ -50,6 +51,7 @@ export default (sequelize, Sequelize) => {
     image: {
       type: Sequelize.STRING,
       allowNull: false,
+      defaultValue: 'https://goo.gl/wRVhMM',
       validate: {
         notEmpty: true,
       },
@@ -57,7 +59,7 @@ export default (sequelize, Sequelize) => {
     available: {
       type: Sequelize.BOOLEAN,
       allowNull: false,
-      defaultValue: true,
+      defaultValue: false,
       validate: {
         notEmpty: true,
       },

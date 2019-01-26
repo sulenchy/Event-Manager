@@ -30,7 +30,7 @@ export default class SignupPage extends React.Component {
   }
 
   // this is the handler triggered when the user click the signup button
-  onSubmit(e){
+  onSubmit(e3){
     e.preventDefault();
     this.props.signUpUser(this.state).then(() => {
         this.props.router.push('/');

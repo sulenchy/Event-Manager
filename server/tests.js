@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import request from 'supertest';
-import app from './index';
+import app from '.';
 import { Users, Events, Centers } from './models';
 
 Users.destroy({

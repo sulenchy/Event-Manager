@@ -1,34 +1,33 @@
 // import dependencies
-import { Centers, Events } from '../models';
+import models from '../models';
 
+
+const { Centers, Events } = models;
 /**
  * This is a AddNewCenter class that allows a admin to add new center
  * @export
  * @class AddNewCenter
  */
-export class AddNewCenter {
+export default class Center {
   /**
- * @param {object} req - The request object from the client
- * @param {object} res - The response object to the client
- * @return {object} JSON - this is returned to notify the user of center creation
- * @static
- * @memberof AddNewCenter
- */
-  static addNew(req, res) {
-    /** Get the user type */
-    const { userType } = req.decoded;
-    if (userType !== 'admin') {
-      return res.status(401).send({
-        status: 'Error accessing the resource',
-        message: 'Sorry, you do not have the required priviledge to the resource',
-      });
-    }
+   * @param {object} req - The request object from the client
+   * @param {object} res - The response object to the client
+   * @return {object} JSON - this is returned to notify the user of center creation
+   * @static
+   * @memberof Center
+   */
+  static async addNew(req, res, next) {
+
     const {
       name, address, capacity, cost, facilities, image,
     } = req.body;
+
     const userId = req.decoded.id;
-    return Centers
-      .create({
+
+    let center;
+
+    try {
+      center = await Centers.create({
         name,
         address,
         capacity,
@@ -37,169 +36,151 @@ export class AddNewCenter {
         image,
         userId,
       })
-      .then((center) => {
-        res.status(201).send({
-          status: 'Success',
-          message: 'Center added successfully',
-          center
-        });
-      })
-      .catch(err => res.status(500).send({
-        status: `Error adding new center`,
-        message: err.message,
-      }));
-  }
-}
+    }
+    catch (err) {
+      next(err);
+    }
 
-/**
- * This is a GetCenterList class that allows you get all center a user has posted
- * @export listAll method
- * @class GetCenterList
- */
-export class GetCenterList {
+    if (center) {
+      const { userType } = req.decoded;
+      if (userType !== 'admin') {
+        return res.status(401).send({
+          status: 'Failure',
+          message: 'Sorry, you do not have required priviledge to add new center. Please, contact the admin at andevents@gmail.com',
+        });
+      }
+      return res.status(201).send({
+        status: 'Success',
+        message: 'Center added successfully',
+        center
+      });
+    }
+  }
+
   /**
      * parse values from the req.body & req.decoded
      * @param {object} req - The request object from the client
      * @param {object} res - The response object to the client
      * @returns {object} JSON -The JSON returned to the client as response containing all centers
      * @static
-     * @memberof GetCenterList
+     * @memberof Center
      */
-  static listAll(req, res) {
-    /* Get all recipes */
-    return Centers
-      .findAll({
-        order: [['name', 'ASC']],
-      })
-      .then((centers) => {
-        /* Checks if db is empty and returns a notice to enter a recipe */
-        if (centers.length === 0) {
-          return res.status(400).send({
-            status: 'Empty list found',
-            message: 'Sorry, No center is available',
-            centers
-          });
-        }
-        return res.status(200).send({
-          status: 'Success',
-          message: 'List of Centers',
-          centers
-        });
-      })
-      .catch(error => res.status(500).send({
-        status: `Error getting list of centers`,
-        message: error.message,
-      }));
+  static async listAll(req, res, next) {
+    let centers;
+    try {
+      centers = await Centers
+        .findAll({
+          order: [['name', 'ASC']],
+        })
+    }
+    catch (err) {
+      next(err)
+    }
+
+    if (centers) {
+      return res.status(200).send({
+        status: 'Success',
+        message: 'List of Centers',
+        centers
+      });
+    }
   }
-}
 
-/**
- * This is a GetCenterWithClient class that allows a user to get a center with slated event
- * @export
- * @class GetCenterWithEvent
- */
-export class GetCenterWithEvent {
   /**
-   * Get the details of a center
-   * @param {object} req The request body of the request.
-   * @param {object} res The response body.
-   * @returns {object} res.
-   */
-  static getCenter(req, res) {
-    return Centers
-    .findOne({
-      where: {
-        id: parseInt(req.params.id,10),
-      },
-      include: [
-        {
-          model: Events,
-          as: 'events',
-        },
-      ],
-    })
-      .then((center) => {
-        if (!center) {
-          return res.status(404).send({
-            status: 'Error getting the center',
-            message: 'Sorry, the selected center cannot be found',
-          });
-        }
-        return res.status(200).send({
-          status: 'Success',
-          message: 'Centers below',
-          center,
-        });
-      })
-      .catch(error => res.status(500).send({
-        status: `Error getting the center`,
-        message: error.message,
-      }));
-  }
-}
-
-
-/**
- * This is a UpdateCenter class that allows a user to update center
- * @export
- * @class UpdateCenter
+ * Get the details of a center
+ * @param {object} req The request body of the request.
+ * @param {object} res The response body.
+ * @returns {object} res.
  */
+  static async getCenter(req, res, next) {
+    let center;
 
-export class UpdateCenter {
-  /**
- * parse values from the req.body & req.decoded
- * @param {object} req - The request object from the client
- * @param {object} res - The response object to the client
- * @return {object|JSON|array} - JSON is returned signifying success or failr of
- *                              the modified event.
- * @static
- * @memberof UpdateEvent
- */
-
-  static updateCenter(req, res) {
-    /* Grab values to be used to authenticate from the request object */
-    const userId = req.decoded.id;
-    
-    /* Finds a event to be updated */
-    return Centers
-      .find({
+    try {
+      center = await Centers.findOne({
         where: {
           id: parseInt(req.params.id, 10),
-          userId,
         },
+        include: [
+          {
+            model: Events,
+            as: 'events',
+          },
+        ],
       })
-      .then((center) => {
-        if (!center) {
-          return res.status(404).send({
-            status: 'Error updating the center details',
-            message: 'Sorry, the center cannot be found',
-          });
-        }
+    }
+    catch (err) {
+      next(err);
+    }
+    if (center) {
+      return res.status(200).send({
+        status: 'Success',
+        message: 'One gotten successfully',
+        center,
+      });
+    }
 
-        /* Updates the event and returns the updated event */
-        return center
-          .update({
-            name: req.body.name || center.name,
-            address: req.body.address || center.address,
-            capacity: req.body.capacity || center.address,
-            cost: req.body.cost || center.cost,
-            facilities: req.body.facilities || center.facilities,
-            image: req.body.image || center.image,
-            available: true || center.available,
-          })
-          .then(updatedCenter => res.status(200).send({
-            status: 'Success',
-            message: 'Center details updated successfully',
-            data: updatedCenter,
-          }))
-          .catch(err => res.status(500).send({
-            status: `Error updating center details`,
-            message: err.message,
-          }));          
-      })
-      .catch(err => res.status(500).send({
-        status: `Error updating center details`,
-        message: err.center,
-      }));
+    return res.status(404).send({
+      status: 'Failure',
+      message: 'Sorry, the selected center cannot be found',
+    });
+  }
+
+  /**
+* parse values from the req.body & req.decoded
+* @param {object} req - The request object from the client
+* @param {object} res - The response object to the client
+* @return {object|JSON|array} - JSON is returned signifying success or failr of
+*                              the modified event.
+* @static
+* @memberof Center
+*/
+
+  static async updateCenter(req, res, next) {
+    /* Grab values to be used to authenticate from the request object */
+    const userId = req.decoded.id;
+    let center;
+    try {
+      center = await Centers
+        .find({
+          where: {
+            id: parseInt(req.params.id, 10),
+            userId,
+          },
+        })
+    }
+    catch (err) {
+      next(err);
+    }
+
+    if (!center) {
+      return res.status(404).send({
+        status: 'Failure',
+        message: 'Sorry, the center cannot be found',
+      });
+    }
+
+    let updatedCenter;
+
+    try {
+      updatedCenter = await center
+        .update({
+          name: req.body.name || center.name,
+          address: req.body.address || center.address,
+          capacity: req.body.capacity || center.capacity,
+          cost: req.body.cost || center.cost,
+          facilities: req.body.facilities || center.facilities,
+          image: req.body.image || center.image,
+          available: true || center.available,
+        })
+    } catch (err) {
+      next(err)
+    }
+
+    return res.status(200).send({
+      status: 'Success',
+      message: 'Center details updated successfully',
+      data: updatedCenter,
+    })
+    
   }
 }

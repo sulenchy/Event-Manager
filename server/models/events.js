@@ -66,7 +66,7 @@ export default (sequelize, Sequelize) => {
       },
     },
   });
-    /* Event has a relationship with User and Center */
+  /* Event has a relationship with User and Center */
   Events.associate = (model) => {
     Events.belongsTo(model.Users, {
       foreignKey: 'userId',
